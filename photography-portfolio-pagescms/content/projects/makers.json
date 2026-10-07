@@ -1,0 +1,20 @@
+{
+  "title": "Makers",
+  "draft": true,
+  "order": 99,
+  "section": "commission",
+  "client": "[Magazine]",
+  "type": "Portrait",
+  "location": "Milan",
+  "role": "",
+  "year": "2024",
+  "description": "[Two or three lines: the brief, what was delivered, how the images are used.]",
+  "cover": "",
+  "blocks": [],
+  "credits": [
+    {
+      "role": "Photography",
+      "name": "Marco Tiberio"
+    }
+  ]
+}

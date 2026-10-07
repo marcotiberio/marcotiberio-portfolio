@@ -1,0 +1,107 @@
+{
+  "title": "Satellites",
+  "draft": false,
+  "order": 5,
+  "section": "personal",
+  "client": "",
+  "type": "Satellite imagery",
+  "location": "Kenya, Chad, Western Sahara",
+  "role": "",
+  "year": "",
+  "description": "Mass migration has created new residential areas that public satellite imagery in Europe barely records: over Calais, updates stopped between 2004 and 2015 while the camp grew. African camps, by contrast, are tracked closely. Each image is stitched from hundreds of HD screenshots, to give these places a visual dignity and read their growth through the principles of town planning.",
+  "cover": "media/satellites/03.jpg",
+  "blocks": [
+    {
+      "type": "images",
+      "layout": "full",
+      "images": [
+        {
+          "image": "media/satellites/02.jpg",
+          "caption": "Laayoune",
+          "alt": "Satellite view of Laayoune camp"
+        }
+      ]
+    },
+    {
+      "type": "images",
+      "layout": "row",
+      "images": [
+        {
+          "image": "media/satellites/01.jpg",
+          "caption": "Oure Cassoni, earlier",
+          "alt": "Oure Cassoni, earlier satellite view"
+        },
+        {
+          "image": "media/satellites/06.jpg",
+          "caption": "Oure Cassoni, later",
+          "alt": "Oure Cassoni, later satellite view"
+        }
+      ]
+    },
+    {
+      "type": "images",
+      "layout": "row",
+      "images": [
+        {
+          "image": "media/satellites/03.jpg",
+          "caption": "Hagadera",
+          "alt": "Satellite view of Hagadera"
+        },
+        {
+          "image": "media/satellites/04.jpg",
+          "caption": "Awserd",
+          "alt": "Satellite view of Awserd"
+        }
+      ]
+    },
+    {
+      "type": "images",
+      "layout": "full",
+      "images": [
+        {
+          "image": "media/satellites/05.jpg",
+          "caption": "Ifo 2",
+          "alt": "Satellite view of Ifo 2"
+        }
+      ]
+    },
+    {
+      "type": "images",
+      "layout": "row",
+      "images": [
+        {
+          "image": "media/satellites/07.jpg",
+          "caption": "Ifo",
+          "alt": "Satellite view of Ifo"
+        },
+        {
+          "image": "media/satellites/08.jpg",
+          "caption": "Smara",
+          "alt": "Satellite view of Smara"
+        }
+      ]
+    },
+    {
+      "type": "images",
+      "layout": "row",
+      "images": [
+        {
+          "image": "media/satellites/09.jpg",
+          "caption": "Boujdour",
+          "alt": "Satellite view of Boujdour"
+        },
+        {
+          "image": "media/satellites/10.jpg",
+          "caption": "Rabouni",
+          "alt": "Satellite view of Rabouni"
+        }
+      ]
+    }
+  ],
+  "credits": [
+    {
+      "role": "Studio",
+      "name": "Defrost Studio"
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "title": "Amsterdam South",
+  "draft": false,
+  "order": 2,
+  "section": "commission",
+  "client": "citizenM",
+  "type": "Hospitality",
+  "location": "Amsterdam",
+  "role": "",
+  "year": "[Year]",
+  "description": "[Two or three lines: the brief, what was delivered, how the images are used.]",
+  "cover": "media/citizenm-amsterdam-south/03.jpg",
+  "blocks": [
+    {
+      "type": "images",
+      "layout": "full",
+      "images": [
+        {
+          "image": "media/citizenm-amsterdam-south/01.jpg",
+          "caption": "",
+          "alt": "View from the entrance through the round glass shower to the bed and window"
+        }
+      ]
+    },
+    {
+      "type": "images",
+      "layout": "row",
+      "images": [
+        {
+          "image": "media/citizenm-amsterdam-south/03.jpg",
+          "caption": "",
+          "alt": "Wall-to-wall bed under a window onto trees"
+        },
+        {
+          "image": "media/citizenm-amsterdam-south/02.jpg",
+          "caption": "",
+          "alt": "From the bed towards the desk, shower and washbasin"
+        }
+      ]
+    },
+    {
+      "type": "images",
+      "layout": "inset",
+      "images": [
+        {
+          "image": "media/citizenm-amsterdam-south/04.jpg",
+          "caption": "",
+          "alt": "Room seen from the bed at an angle, lamps lit"
+        }
+      ]
+    }
+  ],
+  "credits": [
+    {
+      "role": "Photography",
+      "name": "Marco Tiberio"
+    }
+  ]
+}

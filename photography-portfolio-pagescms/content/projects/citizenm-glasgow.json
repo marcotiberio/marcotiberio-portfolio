@@ -1,0 +1,86 @@
+{
+  "title": "Glasgow",
+  "draft": false,
+  "order": 1,
+  "section": "commission",
+  "client": "citizenM",
+  "type": "Hospitality",
+  "location": "Glasgow",
+  "role": "",
+  "year": "[Year]",
+  "description": "[Two or three lines: the brief, what was delivered, how the images are used.]",
+  "cover": "media/citizenm-glasgow/01.jpg",
+  "blocks": [
+    {
+      "type": "images",
+      "layout": "full",
+      "images": [
+        {
+          "image": "media/citizenm-glasgow/02.jpg",
+          "caption": "",
+          "alt": "Long communal table with coloured chairs facing the shelving wall, street view through floor-to-ceiling glass"
+        }
+      ]
+    },
+    {
+      "type": "images",
+      "layout": "row",
+      "images": [
+        {
+          "image": "media/citizenm-glasgow/01.jpg",
+          "caption": "",
+          "alt": "Lime and green sofas around a low wooden table beside the shelving wall"
+        },
+        {
+          "image": "media/citizenm-glasgow/04.jpg",
+          "caption": "",
+          "alt": "Mint armchairs on an ochre rug, the Royal Conservatoire facade through the window"
+        }
+      ]
+    },
+    {
+      "type": "images",
+      "layout": "offset",
+      "images": [
+        {
+          "image": "media/citizenm-glasgow/05.jpg",
+          "caption": "",
+          "alt": "Bar with red counter, a long leather banquette with desk lamps and green chairs along the window"
+        }
+      ],
+      "note": "[Optional caption — e.g. the bar and work lounge on the first floor.]"
+    },
+    {
+      "type": "images",
+      "layout": "inset",
+      "images": [
+        {
+          "image": "media/citizenm-glasgow/03.jpg",
+          "caption": "",
+          "alt": "Quieter lounge with grey sofas, red armchairs and sheer curtains"
+        }
+      ]
+    },
+    {
+      "type": "images",
+      "layout": "full",
+      "images": [
+        {
+          "image": "media/citizenm-glasgow/06.jpg",
+          "caption": "",
+          "alt": "Grey sofa with smiley cushions, an orange sofa and paper lanterns beyond"
+        }
+      ]
+    }
+  ],
+  "credits": [
+    {
+      "role": "Photography",
+      "name": "Marco Tiberio"
+    },
+    {
+      "role": "Interior design",
+      "name": "[Studio name]"
+    }
+  ]
+}

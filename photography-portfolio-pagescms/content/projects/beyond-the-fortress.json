@@ -1,0 +1,52 @@
+{
+  "title": "Beyond the Fortress",
+  "draft": false,
+  "order": 6,
+  "section": "personal",
+  "client": "",
+  "type": "Documentary series",
+  "location": "Lampedusa",
+  "role": "",
+  "year": "",
+  "description": "A short documentary series about people living on Lampedusa and how they deal with the refugee crisis. Four portraits: a doctor, an archivist, a volunteer and a witness.",
+  "cover": "media/beyond-the-fortress/03.jpg",
+  "blocks": [
+    {
+      "type": "vimeo",
+      "videos": [
+        {
+          "id": "130830404",
+          "caption": "Pietro"
+        }
+      ]
+    },
+    {
+      "type": "vimeo",
+      "videos": [
+        {
+          "id": "131536660",
+          "caption": "Nino"
+        },
+        {
+          "id": "132416294",
+          "caption": "Veronica"
+        }
+      ]
+    },
+    {
+      "type": "vimeo",
+      "videos": [
+        {
+          "id": "134859634",
+          "caption": "Paola"
+        }
+      ]
+    }
+  ],
+  "credits": [
+    {
+      "role": "Studio",
+      "name": "Defrost Studio"
+    }
+  ]
+}

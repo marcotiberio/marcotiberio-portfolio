@@ -1,0 +1,81 @@
+{
+  "title": "Immigrant or Expat?",
+  "draft": false,
+  "order": 7,
+  "section": "personal",
+  "client": "",
+  "type": "Generative portraits",
+  "location": "",
+  "role": "",
+  "year": "",
+  "description": "Two words with almost the same dictionary definition. Two GANs, one trained on Flickr images tagged “immigrant”, one on images tagged “expat”, generate portraits for each. Side by side, they show how language, media and our own experience of the world shape the images we attach to words.",
+  "cover": "media/immigrant-or-expat/02.jpg",
+  "blocks": [
+    {
+      "type": "images",
+      "layout": "row",
+      "images": [
+        {
+          "image": "media/immigrant-or-expat/01.jpg",
+          "caption": "Immigrant",
+          "alt": "Generated portrait from the 'immigrant' model"
+        },
+        {
+          "image": "media/immigrant-or-expat/02.jpg",
+          "caption": "Expat",
+          "alt": "Generated portrait from the 'expat' model"
+        },
+        {
+          "image": "media/immigrant-or-expat/03.jpg",
+          "caption": "Immigrant",
+          "alt": "Generated portrait from the 'immigrant' model"
+        },
+        {
+          "image": "media/immigrant-or-expat/04.jpg",
+          "caption": "Expat",
+          "alt": "Generated portrait from the 'expat' model"
+        }
+      ]
+    },
+    {
+      "type": "images",
+      "layout": "row",
+      "images": [
+        {
+          "image": "media/immigrant-or-expat/05.jpg",
+          "caption": "Immigrant",
+          "alt": "Generated portrait from the 'immigrant' model"
+        },
+        {
+          "image": "media/immigrant-or-expat/06.jpg",
+          "caption": "Expat",
+          "alt": "Generated portrait from the 'expat' model"
+        },
+        {
+          "image": "media/immigrant-or-expat/07.jpg",
+          "caption": "Immigrant",
+          "alt": "Generated portrait from the 'immigrant' model"
+        },
+        {
+          "image": "media/immigrant-or-expat/08.jpg",
+          "caption": "Expat",
+          "alt": "Generated portrait from the 'expat' model"
+        }
+      ]
+    }
+  ],
+  "credits": [
+    {
+      "role": "Concept and production",
+      "name": "Marco Tiberio"
+    },
+    {
+      "role": "Curator",
+      "name": "Maria Ghetti"
+    },
+    {
+      "role": "Made with",
+      "name": "Runway ML"
+    }
+  ]
+}

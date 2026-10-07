@@ -1,0 +1,71 @@
+{
+  "title": ".market",
+  "draft": false,
+  "order": 3,
+  "section": "commission",
+  "client": "citizenM",
+  "type": "Lifestyle",
+  "location": "",
+  "role": "Brand designer, photographer and videographer",
+  "year": "[Year]",
+  "description": "A limited-edition drop shop for hotel merchandise, built around the energy of a market: discovery and impulse rather than standard e-commerce. A social campaign built anticipation around each release.",
+  "cover": "media/citizenm-market/02.jpg",
+  "blocks": [
+    {
+      "type": "images",
+      "layout": "row",
+      "images": [
+        {
+          "image": "media/citizenm-market/02.jpg",
+          "caption": "",
+          "alt": "A bed made up on the beach next to a blue bin"
+        },
+        {
+          "image": "media/citizenm-market/01.jpg",
+          "caption": "",
+          "alt": "Seagulls swarming a deckchair and .market bag in the dunes"
+        }
+      ]
+    },
+    {
+      "type": "images",
+      "layout": "row",
+      "images": [
+        {
+          "image": "media/citizenm-market/04.mp4",
+          "caption": "",
+          "alt": "Social clip: the raffle is open, a market stall on a sunny street"
+        },
+        {
+          "image": "media/citizenm-market/03.jpg",
+          "caption": "",
+          "alt": "Fried snack in a red and white checked tray with a .market wooden fork"
+        },
+        {
+          "image": "media/citizenm-market/05.mp4",
+          "caption": "",
+          "alt": "Social clip: last chance, a striped deckchair with .market bags on the beach"
+        }
+      ]
+    },
+    {
+      "type": "images",
+      "layout": "offset",
+      "images": [
+        {
+          "image": "media/citizenm-market/06.jpg",
+          "caption": "",
+          "alt": "Man in a white .market bucket hat against a blue sky"
+        }
+      ],
+      "note": "Product shot as street photography: the bucket hat drop.",
+      "narrow": true
+    }
+  ],
+  "credits": [
+    {
+      "role": "Brand design, photography, video",
+      "name": "Marco Tiberio"
+    }
+  ]
+}
