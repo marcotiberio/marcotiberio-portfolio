@@ -1,8 +1,7 @@
 // Home: image fire. Every 100 ms a random photograph lands somewhere on the canvas
-// and stays, building up a collage. Now and then a strip tears sideways or the
-// screen jolts. Click, tap or Space pauses; paused, the caption names the last
-// photograph and links to its project. With reduced motion: one photograph every
-// 1.5 s, no tearing or jolts. Stops while the tab is hidden.
+// and stays, building up a collage. Click, tap or Space pauses; paused, the caption
+// names the last photograph and links to its project. With reduced motion: one
+// photograph every 1.5 s. Stops while the tab is hidden.
 const stage = document.querySelector('.fire');
 if (stage) {
   const canvas = stage.querySelector('canvas');
@@ -46,26 +45,8 @@ if (stage) {
     ctx.drawImage(item.img, Math.random() * (w - iw), Math.random() * (h - ih), iw, ih);
   };
 
-  // Grab a 100 px strip and shift it 50 px left or right.
-  const tear = () => {
-    const band = 100 * dpr;
-    const y = Math.random() * (canvas.height - band);
-    ctx.save();
-    ctx.setTransform(1, 0, 0, 1, 0, 0);
-    ctx.drawImage(canvas, 0, y, canvas.width, band, (Math.random() < 0.5 ? -50 : 50) * dpr, y, canvas.width, band);
-    ctx.restore();
-  };
-  // Bump the whole canvas sideways for a moment.
-  const jolt = () => {
-    canvas.style.translate = `${Math.random() < 0.5 ? -50 : 50}px 0`;
-    setTimeout(() => { canvas.style.translate = ''; }, 50);
-  };
-
   const tick = () => {
-    if (document.hidden) return;
-    if (!calm && Math.random() < 0.1) tear();
-    if (!calm && Math.random() < 0.05) jolt();
-    add();
+    if (!document.hidden) add();
   };
 
   let timer = null;
