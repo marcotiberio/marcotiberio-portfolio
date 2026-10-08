@@ -19,7 +19,7 @@ Edit the site at **app.pagescms.org**. Every save publishes the site automatical
 
 ## Editing
 
-- **Home:** drag slides to reorder, add/remove with the list buttons. "Linked project" sets the caption; "Crop focus" chooses which part of the photo stays visible.
+- **Home:** drag slides to reorder, add/remove with the list buttons. "Linked project" sets the caption; "Crop focus" chooses which part of the photo stays visible. Untick "Full-bleed" to show the whole photo, aligned to the right.
 - **Projects:** "Order" sets the position (1 = first). Tick "Hidden (draft)" to take a project offline. "Images & video" is a list of blocks: Images (layout: full width, centred, offset + note, side by side) or Vimeo.
 - **Info:** each section has a column (left / middle / right) and a style (small text, dated list, large text).
 - Links in any text: `[text](https://…)`. Empty line = new paragraph.

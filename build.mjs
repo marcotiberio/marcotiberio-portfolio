@@ -90,13 +90,13 @@ if (existsSync('media')) copyDir('media', `${OUT}/media`);
 const slides = home.filter((s) => s.image).map((s) => {
   const slug = String(s.project || '').split('/').pop().replace(/\.json$/, '');
   const p = bySlug[slug];
-  return { img: src(s.image, ''), focus: s.focus || 'center', title: p ? p.title : '', client: p ? p.client : '', href: p ? `projects/${p.slug}.html` : '' };
+  return { img: src(s.image, ''), focus: s.focus || 'center', fullbleed: s.fullbleed !== false, title: p ? p.title : '', client: p ? p.client : '', href: p ? `projects/${p.slug}.html` : '' };
 });
 const first = slides[0] || { title: '', client: '', href: '' };
 writeFileSync(`${OUT}/index.html`, layout({
   title: info.name, root: '', page: 'home',
   body: `<section class="carousel" aria-roledescription="carousel" aria-label="Selected work">
-${slides.map((s, i) => `  <div class="slide${i ? '' : ' is-active'}" data-title="${esc(s.title)}" data-client="${esc(s.client)}" data-href="${esc(s.href)}"${i ? ' aria-hidden="true"' : ''}><figure><img src="${esc(s.img)}" alt="" style="object-position:${esc(s.focus)}"${i < 2 ? ' fetchpriority="high"' : ' loading="lazy"'}></figure></div>`).join('\n')}
+${slides.map((s, i) => `  <div class="slide${s.fullbleed ? '' : ' slide--fit'}${i ? '' : ' is-active'}" data-title="${esc(s.title)}" data-client="${esc(s.client)}" data-href="${esc(s.href)}"${i ? ' aria-hidden="true"' : ''}><figure><img src="${esc(s.img)}" alt="" style="object-position:${esc(s.focus)}"${i < 2 ? ' fetchpriority="high"' : ' loading="lazy"'}></figure></div>`).join('\n')}
   <button class="carousel-zone carousel-zone--prev" type="button" aria-label="Previous image"></button>
   <button class="carousel-zone carousel-zone--next" type="button" aria-label="Next image"></button>
   <a class="carousel-caption"${first.href ? ` href="${first.href}"` : ''}><span class="cap-title">${esc(first.title)}</span> <span class="cap-client">${esc(first.client)}</span></a>
