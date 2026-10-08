@@ -1,13 +1,10 @@
 {
   "title": "Satellites",
-  "draft": true,
+  "draft": false,
   "order": 5,
   "section": "personal",
-  "client": "",
   "type": "Satellite imagery",
   "location": "Kenya, Chad, Western Sahara",
-  "role": "",
-  "year": "",
   "description": "Mass migration has created new residential areas that public satellite imagery in Europe barely records: over Calais, updates stopped between 2004 and 2015 while the camp grew. African camps, by contrast, are tracked closely. Each image is stitched from hundreds of HD screenshots, to give these places a visual dignity and read their growth through the principles of town planning.",
   "cover": "media/satellites/03.jpg",
   "blocks": [
@@ -20,7 +17,8 @@
           "caption": "Laayoune",
           "alt": "Satellite view of Laayoune camp"
         }
-      ]
+      ],
+      "narrow": false
     },
     {
       "type": "images",
@@ -36,7 +34,8 @@
           "caption": "Oure Cassoni, later",
           "alt": "Oure Cassoni, later satellite view"
         }
-      ]
+      ],
+      "narrow": false
     },
     {
       "type": "images",
@@ -52,7 +51,8 @@
           "caption": "Awserd",
           "alt": "Satellite view of Awserd"
         }
-      ]
+      ],
+      "narrow": false
     },
     {
       "type": "images",
@@ -63,7 +63,8 @@
           "caption": "Ifo 2",
           "alt": "Satellite view of Ifo 2"
         }
-      ]
+      ],
+      "narrow": false
     },
     {
       "type": "images",
@@ -79,7 +80,8 @@
           "caption": "Smara",
           "alt": "Satellite view of Smara"
         }
-      ]
+      ],
+      "narrow": false
     },
     {
       "type": "images",
@@ -95,7 +97,8 @@
           "caption": "Rabouni",
           "alt": "Satellite view of Rabouni"
         }
-      ]
+      ],
+      "narrow": false
     }
   ],
   "credits": [
