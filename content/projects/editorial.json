@@ -3,11 +3,5 @@
   "draft": false,
   "order": 5,
   "section": "commission",
-  "description": "[Two or three lines about this body of work.]",
-  "credits": [
-    {
-      "role": "Photography",
-      "name": "Marco Tiberio"
-    }
-  ]
+  "description": "[Two or three lines about this body of work.]"
 }
