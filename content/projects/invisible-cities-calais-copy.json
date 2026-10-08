@@ -1,5 +1,5 @@
 {
-  "title": "Invisible Cities Calais (copy)",
+  "title": "Invisible Cities - Calais",
   "draft": true,
   "order": 4,
   "section": "personal",
@@ -13,7 +13,6 @@
       "layout": "full",
       "images": [
         {
-          "image": "media/invisible-cities-calais/01.jpg",
           "alt": "Stack of Immorefugee zines on an orange background"
         }
       ],
@@ -24,11 +23,11 @@
       "layout": "row",
       "images": [
         {
-          "image": "media/invisible-cities-calais/02.jpg",
+          "image": "media/tibo2016999cimmorefugeea3.jpg",
           "alt": "Spread: listings for the Sudanese area"
         },
         {
-          "image": "media/invisible-cities-calais/03.jpg",
+          "image": "media/tibo2016999cimmorefugeed1-1.jpg",
           "alt": "Spread: listings for the northern area"
         }
       ],
@@ -39,7 +38,7 @@
       "layout": "offset",
       "images": [
         {
-          "image": "media/invisible-cities-calais/04.jpg",
+          "image": "media/tibo2016999cimmorefugeed7.jpg",
           "alt": "Spread: commercial businesses and the back cover"
         }
       ],
@@ -51,11 +50,11 @@
       "layout": "row",
       "images": [
         {
-          "image": "media/invisible-cities-calais/05.jpg",
+          "image": "media/tibo2016999cimmorefugeef3.jpg",
           "alt": "Centre spread: a shelter wrapped in patterned fabric"
         },
         {
-          "image": "media/invisible-cities-calais/06.jpg",
+          "image": "media/tibo2016999cimmorefugeel2.jpg",
           "alt": "Centre spread: a dome shelter in tall grass"
         }
       ],
