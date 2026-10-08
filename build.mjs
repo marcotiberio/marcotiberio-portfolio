@@ -188,26 +188,39 @@ projects.forEach((p) => {
 });
 
 // ── Info ──
-const section = (s) => {
-  let c = '';
+// Same language as the catalogue: the bio large with contact details beside it,
+// then each section as a ruled list — date on the left, text on the right.
+// "Large text" sections join the contact details; empty or placeholder sections are left out.
+const heading = (t) => esc(String(t || '').replace(/:\s*$/, ''));
+const infoSections = (info.sections || []).map((s) => ({ ...s, entries: (s.entries || []).filter((e) => real(e.text)) }));
+const contact = [
+  email && ['Email', `<a href="mailto:${esc(email)}">${esc(email)}</a>`],
+  instagram && ['Instagram', `<a href="https://www.instagram.com/${esc(instagram)}/">@${esc(instagram)}</a>`],
+  real(info.location) && ['Based in', esc(real(info.location))],
+  ...infoSections.filter((s) => s.style === 'large' && real(s.text)).map((s) => [heading(s.title), md(s.text)]),
+].filter(Boolean);
+const infoSection = (s) => {
+  if (s.style === 'large') return '';
   if (s.style === 'list') {
-    const entries = (s.entries || []).filter((e) => real(e.text));
-    if (!entries.length) return '';
-    c = `<ul class="entries">${entries.map((e) => `<li><span>${esc(real(e.date))}</span><span>${md(e.text)}</span></li>`).join('')}</ul>`;
-  } else {
-    if (!real(s.text)) return '';
-    c = s.style === 'large' ? `<p class="big">${md(s.text)}</p>` : paras(s.text);
+    if (!s.entries.length) return '';
+    return `<section class="catalogue">
+  <h2 class="section-head label"><span>${heading(s.title)}</span><span>${String(s.entries.length).padStart(2, '0')}</span></h2>
+  <ol>${s.entries.map((e) => `<li class="fact grid"><span class="f-date">${esc(real(e.date))}</span><span class="f-text">${md(e.text)}</span></li>`).join('')}</ol>
+</section>`;
   }
-  return `<section><h2>${esc(s.title)}</h2>${c}</section>`;
+  if (!real(s.text)) return '';
+  return `<section class="catalogue">
+  <h2 class="section-head label"><span>${heading(s.title)}</span></h2>
+  <div class="fact grid"><div class="f-text">${paras(s.text)}</div></div>
+</section>`;
 };
-const col = (name) => (info.sections || []).filter((s) => (s.column || 'left') === name).map(section).join('\n');
 writeFileSync(`${OUT}/info.html`, layout({
   title: `Info — ${info.name}`, root: '', page: 'info',
-  body: `<div class="info grid">
-  <div class="info-col info-main"><div class="bio">${paras(info.bio)}</div>${col('left')}</div>
-  <div class="info-col">${col('middle')}</div>
-  <div class="info-col info-contact">${email ? `<section><h2>Email</h2><p class="big"><a href="mailto:${esc(email)}">${esc(email)}</a></p></section>` : ''}${col('right')}</div>
-</div>`,
+  body: `<section class="intro info-intro grid">
+  <div class="bio">${paras(info.bio)}</div>
+  ${contact.length ? `<dl class="info-contact">${contact.map(([k, v]) => `<dt class="label">${k}</dt><dd>${v}</dd>`).join('')}</dl>` : ''}
+</section>
+${infoSections.map(infoSection).join('\n')}`,
 }));
 
 console.log(`Built ${OUT}/: index (${projects.length} projects), info.`);
