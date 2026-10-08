@@ -23,15 +23,16 @@ const real = (s) => {
   return t.replace(/\[([^\]]+)\]\(([^)\s[\]]+)\)/g, '').includes('[') ? '' : t;
 };
 
-// Two sections, each on its own page and never mixed: commissions are the home page,
-// research has its own. "personal" is the stored value for Research.
+// Two sections, each on its own page and never mixed: research is the home page,
+// commissions have their own. "personal" is the stored value for Research.
 const SECTIONS = [
-  { key: 'commission', page: 'index.html', label: 'Commissions', prefix: 'C', statement: 'statement', intro: 'intro', cta: 'Enquire about a commission',
-    footer: 'Available for commissions in hospitality, architecture and interiors.' },
-  { key: 'personal', page: 'research.html', label: 'Research', prefix: 'R', statement: 'research_statement', intro: 'research_intro', cta: 'Get in touch',
+  { key: 'personal', page: 'index.html', label: 'Research', prefix: 'R', statement: 'research_statement', intro: 'research_intro', cta: 'Get in touch',
     footer: 'For exhibitions, publications and collaborations.' },
+  { key: 'commission', page: 'commissions.html', label: 'Commissions', prefix: 'C', statement: 'statement', intro: 'intro', cta: 'Enquire about a commission',
+    footer: 'Available for commissions in hospitality, architecture and interiors.' },
 ];
-const sectionOf = (p) => SECTIONS.find((s) => s.key === p.section) || SECTIONS[0];
+const COMMISSIONS = SECTIONS[1];
+const sectionOf = (p) => SECTIONS.find((s) => s.key === p.section) || COMMISSIONS;
 const projects = readdirSync('content/projects')
   .filter((f) => f.endsWith('.json'))
   .map((f) => ({ slug: f.replace(/\.json$/, ''), ...read(`content/projects/${f}`) }))
@@ -86,7 +87,7 @@ const email = real(info.email);
 const instagram = real(info.instagram).replace(/^@/, '');
 const contactHref = (root) => (email ? `mailto:${email}` : `${root}info.html`);
 
-const layout = ({ title, body, root, page, description, section = SECTIONS[0] }) => `<!doctype html>
+const layout = ({ title, body, root, page, description, section = COMMISSIONS }) => `<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -153,8 +154,8 @@ ${list.map(entry).join('\n')}
   }));
 });
 
-// Old links to the work list land on the index.
-writeFileSync(`${OUT}/work.html`, `<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=index.html"><link rel="canonical" href="index.html"><title>${esc(info.name)}</title><a href="index.html">${esc(info.name)}</a>`);
+// Old links to the work list land on the commissions.
+writeFileSync(`${OUT}/work.html`, `<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=commissions.html"><link rel="canonical" href="commissions.html"><title>${esc(info.name)}</title><a href="commissions.html">${esc(info.name)}</a>`);
 
 // ── Project pages ──
 projects.forEach((p) => {
