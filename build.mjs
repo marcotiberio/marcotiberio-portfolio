@@ -221,10 +221,7 @@ writeFileSync(`${OUT}/work.html`, `<!doctype html><meta charset="utf-8"><meta ht
 
 // ── Project pages ──
 projects.forEach((p) => {
-  // "Next" stays inside the project's own section.
   const s = sectionOf(p);
-  const own = projects.filter((x) => sectionOf(x) === s);
-  const next = own[(own.indexOf(p) + 1) % own.length];
   const meta = [['Client', p.client], ['Location', p.location], ['Year', p.year], ['Type', p.type], ['Role', p.role]].map(([k, v]) => [k, real(v)]).filter(([, v]) => v);
   const credits = (p.credits || []).filter((c) => real(c.role) || real(c.name));
   const description = real(p.description);
@@ -244,7 +241,6 @@ projects.forEach((p) => {
   ${sheet.length > 2 ? `<nav class="grid grid-cols-4 md:grid-cols-[repeat(auto-fill,minmax(120px,1fr))] gap-2 -mt-6 md:-mt-12" aria-label="All images">${sheet.map((m, k) => `<a class="group/thumb grid gap-1.5" href="#i${k + 1}"><img class="${FRAME} group-hover/thumb:opacity-70" src="${esc(src(still(m.image), '../'))}" alt="" loading="lazy"><span class="${LABEL} text-soft">${String(k + 1).padStart(2, '0')}</span></a>`).join('')}</nav>` : ''}
   ${(p.blocks || []).map((b) => block(b, '../', fig)).join('\n  ')}
   ${credits.length ? `<section class="${GRID} pt-5 border-t border-line"><h2 class="${FULL} md:col-[1/7] ${LABEL} text-soft">Credits</h2><dl class="${FULL} md:col-[7/10] ${META}">${credits.map((c) => `<dt>${esc(real(c.role))}</dt><dd>${esc(real(c.name))}</dd>`).join('')}</dl></section>` : ''}
-  ${next !== p ? `<a class="group/next flex justify-between items-baseline gap-6 pt-7 border-t border-ink" href="${next.slug}.html"><span class="${LABEL} text-soft">Next · ${next.no}</span><span class="text-[clamp(24px,3vw,40px)] font-medium tracking-[-.02em] group-hover/next:text-soft">${esc(next.title)} →</span></a>` : ''}
 </article>`,
   }));
 });

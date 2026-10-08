@@ -142,7 +142,7 @@ content:
       - name: order
         label: Order
         type: number
-        description: Position within its section (1 = first). Sets the catalogue number (C01, R01 …) and the "Next" sequence.
+        description: Position within its section (1 = first). Sets the catalogue number (C01, R01 …).
       - name: section
         label: Section
         type: select
