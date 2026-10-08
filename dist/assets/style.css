@@ -48,6 +48,23 @@ img, video { display: block; width: 100%; height: auto; object-fit: cover; }
 .site-header nav a:hover, .site-header nav a[aria-current] { color: var(--ink); }
 .site-header .nav-contact { color: var(--ink); }
 
+/* ── Home: image fire ──────────────────────
+   A black screen that fills with photographs. Header links, caption and pause sit on
+   top as small black tags, so they stay legible over any image. */
+.page-home { padding: 0; height: 100dvh; overflow: hidden; background: #000; }
+.page-home .site-header { position: fixed; inset: 0 0 auto 0; z-index: 2; padding: 24px calc(var(--margin) - 6px); background: none; }
+.page-home .site-header nav { gap: 4px; }
+.page-home .site-header a, .fire-caption, .fire-toggle { padding: 2px 6px; background: #000; color: #fff; }
+.page-home .site-header nav a { color: #b5b5b3; }
+.page-home .site-header nav a:hover { color: #fff; }
+.fire { position: fixed; inset: 0; background: #000; }
+.fire canvas { display: block; width: 100%; height: 100%; cursor: pointer; }
+.fire-caption, .fire-toggle { position: fixed; bottom: 28px; z-index: 2; font: inherit; }
+.fire-caption { left: calc(var(--margin) - 6px); }
+.fire-caption:hover { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+.fire-toggle { right: calc(var(--margin) - 6px); border: 0; cursor: pointer; }
+.fire-toggle:focus-visible { outline: 1px solid #fff; outline-offset: 3px; }
+
 /* ── Index ──────────────────────────────── */
 .intro { padding: 72px 0 120px; row-gap: 32px; align-items: end; }
 .intro h1 { grid-column: 1 / 9; font-size: clamp(36px, 5.2vw, 76px); line-height: 1; font-weight: 500; letter-spacing: -.025em; text-wrap: balance; }
@@ -133,6 +150,8 @@ iframe { display: block; width: 100%; height: auto; border: 0; background: var(-
   html { scroll-padding-top: 64px; }
   .site-header { padding: 20px 0; flex-wrap: wrap; row-gap: 8px; }
   .site-header nav { gap: 16px; }
+  .page-home .site-header { padding: 16px calc(var(--margin) - 6px); }
+  .fire-caption, .fire-toggle { bottom: 20px; }
   .grid > * { grid-column: 1 / -1 !important; }
   .intro { padding: 40px 0 72px; }
   .catalogue { padding-bottom: 72px; }

@@ -6,6 +6,37 @@ media:
   extensions: [jpg, jpeg, png, webp, gif, mp4]
 
 content:
+  # ── Home: image fire ──────────────────────────
+  - name: home
+    label: Home (image fire)
+    type: file
+    path: content/home.json
+    format: json
+    fields:
+      - name: slides
+        label: Photographs
+        type: object
+        description: The photographs fired onto the home page, in random order. The more, the better.
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{index} — {image}"
+        fields:
+          - name: image
+            label: Image
+            type: image
+            required: true
+            options:
+              path: media/home
+          - name: project
+            label: Linked project
+            type: reference
+            description: Optional. When a visitor pauses on this photograph, its project title is shown as a link.
+            options:
+              collection: projects
+              value: "{path}"
+              label: "{title}"
+
   # ── Projects ──────────────────────────────────
   - name: projects
     label: Projects

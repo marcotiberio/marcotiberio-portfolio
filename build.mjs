@@ -23,10 +23,10 @@ const real = (s) => {
   return t.replace(/\[([^\]]+)\]\(([^)\s[\]]+)\)/g, '').includes('[') ? '' : t;
 };
 
-// Two sections, each on its own page and never mixed: research is the home page,
-// commissions have their own. "personal" is the stored value for Research.
+// Two sections, each on its own page and never mixed. The home page is the image fire.
+// "personal" is the stored value for Research.
 const SECTIONS = [
-  { key: 'personal', page: 'index.html', label: 'Research', prefix: 'R', statement: 'research_statement', intro: 'research_intro', cta: 'Get in touch',
+  { key: 'personal', page: 'research.html', label: 'Research', prefix: 'R', statement: 'research_statement', intro: 'research_intro', cta: 'Get in touch',
     footer: 'For exhibitions, publications and collaborations.' },
   { key: 'commission', page: 'commissions.html', label: 'Commissions', prefix: 'C', statement: 'statement', intro: 'intro', cta: 'Enquire about a commission',
     footer: 'Available for commissions in hospitality, architecture and interiors.' },
@@ -38,6 +38,7 @@ const projects = readdirSync('content/projects')
   .map((f) => ({ slug: f.replace(/\.json$/, ''), ...read(`content/projects/${f}`) }))
   .filter((p) => !p.draft)
   .sort((a, b) => SECTIONS.indexOf(sectionOf(a)) - SECTIONS.indexOf(sectionOf(b)) || (Number(a.order) || 99) - (Number(b.order) || 99));
+const bySlug = Object.fromEntries(projects.map((p) => [p.slug, p]));
 // Catalogue numbers: C01, C02 … R01, R02 …
 for (const s of SECTIONS) projects.filter((p) => sectionOf(p) === s).forEach((p, i) => { p.no = s.prefix + String(i + 1).padStart(2, '0'); });
 
@@ -87,7 +88,7 @@ const email = real(info.email);
 const instagram = real(info.instagram).replace(/^@/, '');
 const contactHref = (root) => (email ? `mailto:${email}` : `${root}info.html`);
 
-const layout = ({ title, body, root, page, description, section = COMMISSIONS }) => `<!doctype html>
+const layout = ({ title, body, root, page, description, section = COMMISSIONS, script }) => `<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -107,11 +108,12 @@ const layout = ({ title, body, root, page, description, section = COMMISSIONS })
 <main>
 ${body}
 </main>
-<footer class="site-footer grid">
+${page === 'home' ? '' : `<footer class="site-footer grid">
   <p class="f-lead">${section.footer}</p>
   <p class="f-contact">${email ? `<a href="mailto:${esc(email)}">${esc(email)}</a>` : `<a href="${root}info.html">Contact details</a>`}${instagram ? `<br><a href="https://www.instagram.com/${esc(instagram)}/">Instagram</a>` : ''}</p>
   <p class="f-base label">${esc(info.name)} · ${esc(real(info.location) || 'Amsterdam')}</p>
-</footer>
+</footer>`}
+${script ? `<script src="${root}assets/${script}" defer></script>` : ''}
 </body>
 </html>
 `;
@@ -139,7 +141,7 @@ SECTIONS.forEach((s) => {
   const statement = real(info[s.statement]);
   const intro = real(info[s.intro]);
   writeFileSync(`${OUT}/${s.page}`, layout({
-    title: s.page === 'index.html' ? info.name : `${s.label} — ${info.name}`, root: '', page: s.key, section: s,
+    title: `${s.label} — ${info.name}`, root: '', page: s.key, section: s,
     description: statement && intro ? `${statement} ${intro.replace(/\s+/g, ' ')}` : '',
     body: `<section class="intro grid">
   ${statement ? `<h1>${md(statement)}</h1>` : ''}
@@ -153,6 +155,24 @@ ${list.map(entry).join('\n')}
 </section>` : ''}`,
   }));
 });
+
+// ── Home: image fire ──
+// The photographs chosen under Home in the CMS, fired onto a canvas by assets/fire.js.
+// Each carries its project's title and link, shown when the visitor pauses.
+const homeFile = read('content/home.json');
+const fire = (Array.isArray(homeFile) ? homeFile : homeFile.slides || []).filter((s) => s.image).map((s) => {
+  const p = bySlug[String(s.project || '').split('/').pop().replace(/\.json$/, '')];
+  return { src: src(still(s.image), ''), title: p ? p.title : '', href: p ? `projects/${p.slug}.html` : '' };
+});
+writeFileSync(`${OUT}/index.html`, layout({
+  title: info.name, root: '', page: 'home', script: 'fire.js',
+  body: `<section class="fire" aria-label="Photographs, shown in rapid succession">
+  <canvas></canvas>
+  <a class="fire-caption" hidden></a>
+  <button class="fire-toggle" type="button">Pause</button>
+  <script type="application/json" id="fire-data">${JSON.stringify(fire).replace(/</g, '\\u003c')}</script>
+</section>`,
+}));
 
 // Old links to the work list land on the commissions.
 writeFileSync(`${OUT}/work.html`, `<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=commissions.html"><link rel="canonical" href="commissions.html"><title>${esc(info.name)}</title><a href="commissions.html">${esc(info.name)}</a>`);

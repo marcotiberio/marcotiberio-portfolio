@@ -4,9 +4,9 @@ Edit the site at **app.pagescms.org**. Every save publishes the site automatical
 
 ## What's where
 
-- `content/home.json` — carousel slides (edited as **Home (carousel)**)
+- `content/home.json` — photographs for the home page image fire (edited as **Home (image fire)**)
 - `content/projects/*.json` — one file per project (edited as **Projects**)
-- `content/info.json` — bio and Info sections (edited as **Info**)
+- `content/info.json` — bio, Info sections, email and the Research / Commissions page texts (edited as **Info**)
 - `media/` — all images and videos
 - `assets/` — design (CSS + JS). `build.mjs` turns content into the site in `dist/`.
 - `.pages.yml` — tells Pages CMS which fields to show.
@@ -19,7 +19,7 @@ Edit the site at **app.pagescms.org**. Every save publishes the site automatical
 
 ## Editing
 
-- **Home:** each slide is a collapsed row (number + image file); click to open it. Drag slides to reorder, add/remove with the list buttons. "Linked project" sets the caption; "Crop focus" chooses which part of the photo stays visible. Untick "Full-bleed" to show the whole photo, centred.
+- **Home:** the photographs fired onto the home page, in random order. "Linked project" names the photograph (and links to its project) when a visitor pauses. Add as many as you like.
 - **Projects:** "Order" sets the position (1 = first). Tick "Hidden (draft)" to take a project offline. "Images & video" is a list of blocks: Images (layout: full width, centred, offset + note, side by side) or Vimeo.
 - **Info:** each section has a column (left / middle / right) and a style (small text, dated list, large text).
 - Links in any text: `[text](https://…)`. Empty line = new paragraph.
