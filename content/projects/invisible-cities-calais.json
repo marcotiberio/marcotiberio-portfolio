@@ -1,13 +1,10 @@
 {
   "title": "Invisible Cities Calais",
-  "draft": true,
+  "draft": false,
   "order": 4,
   "section": "personal",
-  "client": "",
   "type": "Zine",
   "location": "Calais",
-  "role": "",
-  "year": "",
   "description": "Homes built by refugees in the Calais camp, the “New Jungle”: 500,000 m² on the edge of the city, enclosed by a five-metre fence, with a range of housing types, both established and new. The series became Immorefugee, a property guide to the camp in the style of a holiday-let brochure, selected for the Kassel Photobook Award 2016.",
   "cover": "media/invisible-cities-calais/01.jpg",
   "blocks": [
@@ -17,10 +14,10 @@
       "images": [
         {
           "image": "media/invisible-cities-calais/01.jpg",
-          "caption": "",
           "alt": "Stack of Immorefugee zines on an orange background"
         }
-      ]
+      ],
+      "narrow": false
     },
     {
       "type": "images",
@@ -28,15 +25,14 @@
       "images": [
         {
           "image": "media/invisible-cities-calais/02.jpg",
-          "caption": "",
           "alt": "Spread: listings for the Sudanese area"
         },
         {
           "image": "media/invisible-cities-calais/03.jpg",
-          "caption": "",
           "alt": "Spread: listings for the northern area"
         }
-      ]
+      ],
+      "narrow": false
     },
     {
       "type": "images",
@@ -44,11 +40,11 @@
       "images": [
         {
           "image": "media/invisible-cities-calais/04.jpg",
-          "caption": "",
           "alt": "Spread: commercial businesses and the back cover"
         }
       ],
-      "note": "“Wicked and brilliant… a welcome antidote to many photographic projects that have emerged around the refugee crisis.” — Martin Parr"
+      "note": "“Wicked and brilliant… a welcome antidote to many photographic projects that have emerged around the refugee crisis.” — Martin Parr",
+      "narrow": false
     },
     {
       "type": "images",
@@ -56,15 +52,14 @@
       "images": [
         {
           "image": "media/invisible-cities-calais/05.jpg",
-          "caption": "",
           "alt": "Centre spread: a shelter wrapped in patterned fabric"
         },
         {
           "image": "media/invisible-cities-calais/06.jpg",
-          "caption": "",
           "alt": "Centre spread: a dome shelter in tall grass"
         }
-      ]
+      ],
+      "narrow": false
     }
   ],
   "credits": [
