@@ -12,9 +12,7 @@
       "type": "images",
       "layout": "full",
       "images": [
-        {
-          "alt": "Stack of Immorefugee zines on an orange background"
-        }
+        {}
       ],
       "narrow": false
     },
@@ -23,12 +21,10 @@
       "layout": "row",
       "images": [
         {
-          "image": "media/tibo2016999cimmorefugeea3.jpg",
-          "alt": "Spread: listings for the Sudanese area"
+          "image": "media/tibo2016999cimmorefugeea3.jpg"
         },
         {
-          "image": "media/tibo2016999cimmorefugeed1-1.jpg",
-          "alt": "Spread: listings for the northern area"
+          "image": "media/tibo2016999cimmorefugeed1-1.jpg"
         }
       ],
       "narrow": false
@@ -38,11 +34,9 @@
       "layout": "offset",
       "images": [
         {
-          "image": "media/tibo2016999cimmorefugeed7.jpg",
-          "alt": "Spread: commercial businesses and the back cover"
+          "image": "media/tibo2016999cimmorefugeed7.jpg"
         }
       ],
-      "note": "“Wicked and brilliant… a welcome antidote to many photographic projects that have emerged around the refugee crisis.” — Martin Parr",
       "narrow": false
     },
     {
@@ -50,12 +44,10 @@
       "layout": "row",
       "images": [
         {
-          "image": "media/tibo2016999cimmorefugeef3.jpg",
-          "alt": "Centre spread: a shelter wrapped in patterned fabric"
+          "image": "media/tibo2016999cimmorefugeef3.jpg"
         },
         {
-          "image": "media/tibo2016999cimmorefugeel2.jpg",
-          "alt": "Centre spread: a dome shelter in tall grass"
+          "image": "media/tibo2016999cimmorefugeel2.jpg"
         }
       ],
       "narrow": false
