@@ -32,7 +32,7 @@ content:
         label: Full-bleed
         type: boolean
         default: true
-        description: On = the photo fills the screen. Off = the whole photo is shown, aligned to the right.
+        description: On = the photo fills the screen. Off = the whole photo is shown, centred.
       - name: focus
         label: Crop focus
         type: select

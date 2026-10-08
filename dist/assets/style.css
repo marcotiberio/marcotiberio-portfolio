@@ -136,7 +136,7 @@ iframe { display: block; width: 100%; height: auto; border: 0; background: var(-
 /* ── Home: full-bleed carousel ─────────────
    Images fill the screen; the header, caption and counter sit on top in white
    with a soft shadow so they stay legible on light and dark photos. */
-.page-home { padding: 0; height: 100dvh; overflow: hidden; background: #000; }
+.page-home { padding: 0; height: 100dvh; overflow: hidden; background: var(--bg); }
 .page-home .site-header {
   position: fixed; inset: 0 0 auto 0; z-index: 3; padding: 28px var(--margin);
   background: none; color: #fff; text-shadow: 0 0 14px rgba(0,0,0,.35);
@@ -147,9 +147,12 @@ iframe { display: block; width: 100%; height: auto; border: 0; background: var(-
 .slide.is-active { opacity: 1; }
 .slide figure { flex: 1 1 0; min-width: 0; height: 100%; margin: 0; }
 .slide img { width: 100%; height: 100%; object-fit: cover; }
-/* Not full-bleed: whole photo, aligned right, clear of the header and caption. */
+/* Not full-bleed: whole photo, centred, clear of the header and caption. */
 .slide--fit figure { padding: 88px var(--margin) 76px; }
-.slide--fit img { object-fit: contain; object-position: right center !important; }
+.slide--fit img { object-fit: contain; object-position: center !important; }
+/* On a fitted slide the overlay text sits on the page background, so use the page ink. */
+.page-home:has(.slide--fit.is-active) :is(.site-header, .site-header nav a, .carousel-caption, .carousel-count) { color: var(--ink); text-shadow: none; }
+.page-home .site-header, .page-home .site-header nav a, .carousel-caption, .carousel-count { transition: color .7s ease; }
 .carousel-zone { position: absolute; top: 0; bottom: 0; width: 50%; z-index: 1; border: 0; padding: 0; background: none; }
 .carousel-zone--prev { left: 0; cursor: w-resize; }
 .carousel-zone--next { right: 0; cursor: e-resize; }
