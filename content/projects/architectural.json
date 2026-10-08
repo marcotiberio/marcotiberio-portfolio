@@ -1,15 +1,12 @@
 {
   "title": "Architectural",
-  "draft": true,
+  "draft": false,
   "order": 4,
   "section": "commission",
   "client": "citizenM",
   "type": "Architecture",
   "location": "Glasgow, Amsterdam",
-  "role": "",
-  "year": "",
   "description": "[Two or three lines about this body of work.]",
-  "cover": "",
   "index": [
     {
       "image": "media/citizenm-glasgow/02.jpg",
@@ -38,7 +35,8 @@
           "caption": "citizenM Glasgow",
           "alt": "Long communal table with coloured chairs facing the shelving wall, street view through floor-to-ceiling glass"
         }
-      ]
+      ],
+      "narrow": false
     },
     {
       "type": "images",
@@ -54,7 +52,8 @@
           "caption": "citizenM Glasgow",
           "alt": "Mint armchairs on an ochre rug, the Royal Conservatoire facade through the window"
         }
-      ]
+      ],
+      "narrow": false
     },
     {
       "type": "images",
@@ -66,7 +65,8 @@
           "alt": "Bar with red counter, a long leather banquette with desk lamps and green chairs along the window"
         }
       ],
-      "note": "[Optional caption — e.g. the bar and work lounge on the first floor.]"
+      "note": "[Optional caption — e.g. the bar and work lounge on the first floor.]",
+      "narrow": false
     },
     {
       "type": "images",
@@ -77,7 +77,8 @@
           "caption": "citizenM Glasgow",
           "alt": "Quieter lounge with grey sofas, red armchairs and sheer curtains"
         }
-      ]
+      ],
+      "narrow": false
     },
     {
       "type": "images",
@@ -88,7 +89,8 @@
           "caption": "citizenM Glasgow",
           "alt": "Grey sofa with smiley cushions, an orange sofa and paper lanterns beyond"
         }
-      ]
+      ],
+      "narrow": false
     },
     {
       "type": "images",
@@ -99,7 +101,8 @@
           "caption": "citizenM Amsterdam South",
           "alt": "View from the entrance through the round glass shower to the bed and window"
         }
-      ]
+      ],
+      "narrow": false
     },
     {
       "type": "images",
@@ -115,7 +118,8 @@
           "caption": "citizenM Amsterdam South",
           "alt": "From the bed towards the desk, shower and washbasin"
         }
-      ]
+      ],
+      "narrow": false
     },
     {
       "type": "images",
@@ -126,7 +130,8 @@
           "caption": "citizenM Amsterdam South",
           "alt": "Room seen from the bed at an angle, lamps lit"
         }
-      ]
+      ],
+      "narrow": false
     }
   ],
   "credits": [
