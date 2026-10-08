@@ -28,10 +28,15 @@ content:
           collection: projects
           value: "{path}"
           label: "{title}"
+      - name: fullbleed
+        label: Full-bleed
+        type: boolean
+        default: true
+        description: On = the photo fills the screen. Off = the whole photo is shown, aligned to the right.
       - name: focus
         label: Crop focus
         type: select
-        description: Which part of the photo stays visible when it is cropped to the screen.
+        description: Which part of the photo stays visible when it is cropped to the screen (full-bleed only).
         default: center
         options:
           values:
