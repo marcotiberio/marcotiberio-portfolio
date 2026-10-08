@@ -8,7 +8,9 @@ Edit the site at **app.pagescms.org**. Every save publishes the site automatical
 - `content/projects/*.json` — one file per project (edited as **Projects**)
 - `content/info.json` — bio, Info sections, email and the Research / Commissions page texts (edited as **Info**)
 - `media/` — all images and videos
-- `assets/` — design (CSS + JS). `build.mjs` turns content into the site in `dist/`.
+- `build.mjs` — turns content into the site in `dist/`. The page markup and its Tailwind classes live here.
+- `src/style.css` — Tailwind setup: colours (with dark mode), fonts, breakpoints and a few base styles. Compiled by the build.
+- `assets/` — the home page script (`fire.js`).
 - `.pages.yml` — tells Pages CMS which fields to show.
 
 ## One-time setup (≈15 minutes)
@@ -26,4 +28,4 @@ Edit the site at **app.pagescms.org**. Every save publishes the site automatical
 
 ## Preview locally (optional)
 
-`node build.mjs`, then open `dist/index.html`.
+`npm install` (once), then `node build.mjs`, then open `dist/index.html`.
