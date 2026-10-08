@@ -1,15 +1,27 @@
 {
   "slides": [
     {
-      "image": "media/citizenm-glasgow/02.jpg",
-      "project": "content/projects/citizenm-glasgow.json",
+      "image": "media/home/mix-07.jpg",
+      "project": "content/projects/satellites.json",
       "fullbleed": true,
       "focus": "center"
     },
     {
-      "image": "media/satellites/05.jpg",
+      "image": "media/home/mix-09.jpg",
       "project": "content/projects/satellites.json",
+      "fullbleed": true,
+      "focus": "center"
+    },
+    {
+      "image": "media/home/screenshot-2020-05-06-at-115529-1.png",
+      "project": "content/projects/beyond-the-fortress.json",
       "fullbleed": false,
+      "focus": "center"
+    },
+    {
+      "image": "media/citizenm-glasgow/02.jpg",
+      "project": "content/projects/citizenm-glasgow.json",
+      "fullbleed": true,
       "focus": "center"
     },
     {
@@ -34,26 +46,15 @@
       "focus": "center"
     },
     {
-      "image": "media/home/mix-14.jpg",
-      "project": "content/projects/satellites.json",
-      "fullbleed": false,
-      "focus": "center"
-    },
-    {
-      "image": "media/home/mix-03.jpg",
-      "fullbleed": false,
-      "focus": "center"
-    },
-    {
       "image": "media/citizenm-amsterdam-south/01.jpg",
       "project": "content/projects/citizenm-amsterdam-south.json",
       "fullbleed": true,
       "focus": "center"
     },
     {
-      "image": "media/home/mix-09.jpg",
+      "image": "media/home/mix-14.jpg",
       "project": "content/projects/satellites.json",
-      "fullbleed": true,
+      "fullbleed": false,
       "focus": "center"
     },
     {
@@ -78,20 +79,8 @@
       "focus": "center"
     },
     {
-      "image": "media/citizenm-market/01.jpg",
-      "project": "content/projects/citizenm-market.json",
-      "fullbleed": false,
-      "focus": "center"
-    },
-    {
       "image": "media/home/mix-11.jpg",
       "fullbleed": false,
-      "focus": "center"
-    },
-    {
-      "image": "media/home/mix-07.jpg",
-      "project": "content/projects/satellites.json",
-      "fullbleed": true,
       "focus": "center"
     },
     {
@@ -133,12 +122,6 @@
       "image": "media/home/immorefugee-01.jpg",
       "project": "content/projects/invisible-cities-calais.json",
       "fullbleed": true,
-      "focus": "center"
-    },
-    {
-      "image": "media/home/screenshot-2020-05-06-at-115529-1.png",
-      "project": "content/projects/beyond-the-fortress.json",
-      "fullbleed": false,
       "focus": "center"
     }
   ]
