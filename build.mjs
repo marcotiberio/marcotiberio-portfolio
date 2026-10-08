@@ -15,15 +15,27 @@ const copyDir = (from, to) => {
 const OUT = process.env.OUT || 'dist';
 const read = (f) => JSON.parse(readFileSync(f, 'utf8'));
 const info = read('content/info.json');
-// Slides live under "slides" (older files were a bare array).
-const homeFile = read('content/home.json');
-const home = Array.isArray(homeFile) ? homeFile : homeFile.slides || [];
+
+// Placeholder text like "[Year]" or "[Client], [Client]" is never published.
+// Real links "[label](https://…)" are fine; anything else with a "[" is a placeholder.
+const real = (s) => {
+  const t = String(s ?? '').trim();
+  return t.replace(/\[([^\]]+)\]\(([^)\s[\]]+)\)/g, '').includes('[') ? '' : t;
+};
+
+// Sections: commissions first, then research. "personal" is the stored value for Research.
+const SECTIONS = [
+  { key: 'commission', id: 'commissions', label: 'Commissions', prefix: 'C' },
+  { key: 'personal', id: 'research', label: 'Research', prefix: 'R' },
+];
+const sectionOf = (p) => SECTIONS.find((s) => s.key === p.section) || SECTIONS[0];
 const projects = readdirSync('content/projects')
   .filter((f) => f.endsWith('.json'))
   .map((f) => ({ slug: f.replace(/\.json$/, ''), ...read(`content/projects/${f}`) }))
   .filter((p) => !p.draft)
-  .sort((a, b) => (Number(a.order) || 99) - (Number(b.order) || 99));
-const bySlug = Object.fromEntries(projects.map((p) => [p.slug, p]));
+  .sort((a, b) => SECTIONS.indexOf(sectionOf(a)) - SECTIONS.indexOf(sectionOf(b)) || (Number(a.order) || 99) - (Number(b.order) || 99));
+// Catalogue numbers: C01, C02 … R01, R02 …
+for (const s of SECTIONS) projects.filter((p) => sectionOf(p) === s).forEach((p, i) => { p.no = s.prefix + String(i + 1).padStart(2, '0'); });
 
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 // Plain text with [label](url) links and line breaks.
@@ -31,18 +43,27 @@ const md = (s) => esc(s).replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, '<a href="$2">$1<
 const paras = (s) => String(s || '').split(/\n\s*\n/).filter(Boolean).map((p) => `<p>${md(p.trim())}</p>`).join('');
 // Pages CMS may store media paths with or without a leading slash.
 const src = (p, root) => root + String(p || '').replace(/^\//, '');
+// A still for any media item: videos use their "-poster.jpg".
+const still = (p) => String(p || '').replace(/\.mp4$/, '-poster.jpg');
 
 const media = (item, root) => {
   const s = src(item.image, root);
   if (s.endsWith('.mp4')) {
-    const poster = s.replace(/\.mp4$/, '-poster.jpg');
-    return `<video src="${esc(s)}" poster="${esc(poster)}" autoplay muted loop playsinline preload="metadata" aria-label="${esc(item.alt)}"></video>`;
+    return `<video src="${esc(s)}" poster="${esc(still(s))}" autoplay muted loop playsinline preload="metadata" aria-label="${esc(item.alt)}"></video>`;
   }
   return `<img src="${esc(s)}" alt="${esc(item.alt)}" loading="lazy">`;
 };
-const fig = (item, root) => `<figure>${media(item, root)}${item.caption ? `<figcaption>${esc(item.caption)}</figcaption>` : ''}</figure>`;
 
-const block = (b, root) => {
+// Every image and video of a project, in page order.
+const allMedia = (p) => (p.blocks || []).filter((b) => b.type !== 'vimeo').flatMap((b) => (b.images || []).filter((i) => i.image));
+// The photographs shown in the project's index row: chosen in the CMS, else the first four.
+const indexMedia = (p) => {
+  const chosen = (p.index || []).filter((i) => i.image);
+  const list = chosen.length ? chosen : allMedia(p);
+  return (list.length ? list : p.cover ? [{ image: p.cover }] : []).slice(0, 4);
+};
+
+const block = (b, root, fig) => {
   if (b.type === 'vimeo') {
     const v = (b.videos || []).filter((x) => x.id);
     if (!v.length) return '';
@@ -57,6 +78,10 @@ const block = (b, root) => {
     default: return imgs.map((i) => `<div class="b b-full">${fig(i, root)}</div>`).join('');
   }
 };
+
+const email = real(info.email);
+const instagram = real(info.instagram).replace(/^@/, '');
+const contactHref = (root) => (email ? `mailto:${email}` : `${root}info.html`);
 
 const layout = ({ title, body, root, page, description }) => `<!doctype html>
 <html lang="en">
@@ -73,12 +98,16 @@ const layout = ({ title, body, root, page, description }) => `<!doctype html>
 <body class="page-${page}">
 <header class="site-header">
   <a class="site-name" href="${root}index.html">${esc(info.name)}</a>
-  <nav><a href="${root}work.html"${page === 'work' ? ' aria-current="page"' : page === 'project' ? ' aria-current="true"' : ''}>Projects</a><a href="${root}info.html"${page === 'info' ? ' aria-current="page"' : ''}>Info</a></nav>
+  <nav>${SECTIONS.map((s) => `<a href="${root}index.html#${s.id}">${s.label}</a>`).join('')}<a href="${root}info.html"${page === 'info' ? ' aria-current="page"' : ''}>Info</a><a class="nav-contact" href="${contactHref(root)}">Contact</a></nav>
 </header>
 <main>
 ${body}
 </main>
-<script src="${root}assets/main.js" defer></script>
+<footer class="site-footer grid">
+  <p class="f-lead">Available for commissions in hospitality, architecture and interiors.</p>
+  <p class="f-contact">${email ? `<a href="mailto:${esc(email)}">${esc(email)}</a>` : `<a href="${root}info.html">Contact details</a>`}${instagram ? `<br><a href="https://www.instagram.com/${esc(instagram)}/">Instagram</a>` : ''}</p>
+  <p class="f-base label">${esc(info.name)} · ${esc(real(info.location) || 'Amsterdam')}</p>
+</footer>
 </body>
 </html>
 `;
@@ -88,53 +117,66 @@ mkdirSync(`${OUT}/projects`, { recursive: true });
 copyDir('assets', `${OUT}/assets`);
 if (existsSync('media')) copyDir('media', `${OUT}/media`);
 
-// ── Home carousel ──
-const slides = home.filter((s) => s.image).map((s) => {
-  const slug = String(s.project || '').split('/').pop().replace(/\.json$/, '');
-  const p = bySlug[slug];
-  return { img: src(s.image, ''), focus: s.focus || 'center', fullbleed: s.fullbleed !== false, title: p ? p.title : '', client: p ? p.client : '', href: p ? `projects/${p.slug}.html` : '' };
-});
-const first = slides[0] || { title: '', client: '', href: '' };
+// One line of facts per project: client, place, year, type — whatever is filled in.
+const facts = (p) => [p.client, p.location, p.year, p.type].map(real).filter(Boolean);
+
+// ── Index (home) ──
+// Each project is one catalogue entry: number and facts on the left, up to four
+// photographs at one size on the right, so the work can be compared at a glance.
+const entry = (p) => {
+  const tiles = indexMedia(p);
+  return `<li><a class="entry grid" href="projects/${p.slug}.html">
+  <div class="e-label"><span class="no label">${p.no}</span><h3>${esc(p.title)}</h3><p>${facts(p).map(esc).join('<br>')}</p></div>
+  <div class="e-tiles" style="--n:${tiles.length}">${tiles.map((t) => `<figure><img src="${esc(src(still(t.image), ''))}" alt="${esc(t.alt)}" loading="lazy"></figure>`).join('')}</div>
+</a></li>`;
+};
+const statement = real(info.statement);
+const intro = real(info.intro);
 writeFileSync(`${OUT}/index.html`, layout({
   title: info.name, root: '', page: 'home',
-  body: `<section class="carousel" aria-roledescription="carousel" aria-label="Selected work">
-${slides.map((s, i) => `  <div class="slide${s.fullbleed ? '' : ' slide--fit'}${i ? '' : ' is-active'}" data-title="${esc(s.title)}" data-client="${esc(s.client)}" data-href="${esc(s.href)}"${i ? ' aria-hidden="true"' : ''}><figure><img src="${esc(s.img)}" alt="" style="object-position:${esc(s.focus)}"${i < 2 ? ' fetchpriority="high"' : ' loading="lazy"'}></figure></div>`).join('\n')}
-  <button class="carousel-zone carousel-zone--prev" type="button" aria-label="Previous image"></button>
-  <button class="carousel-zone carousel-zone--next" type="button" aria-label="Next image"></button>
-  <a class="carousel-caption"${first.href ? ` href="${first.href}"` : ''}><span class="cap-title">${esc(first.title)}</span> <span class="cap-client">${esc(first.client)}</span></a>
-  <p class="carousel-count" aria-live="polite"><span class="cur">01</span> / ${String(slides.length).padStart(2, '0')}</p>
-</section>`,
+  body: `<section class="intro grid">
+  ${statement ? `<h1>${md(statement)}</h1>` : ''}
+  ${intro ? `<div class="intro-sub">${paras(intro)}<p><a class="cta" href="${contactHref('')}">${email ? 'Enquire about a commission' : 'Contact'} →</a></p></div>` : ''}
+</section>
+${SECTIONS.map((s) => {
+    const list = projects.filter((p) => sectionOf(p) === s);
+    if (!list.length) return '';
+    return `<section class="catalogue" id="${s.id}">
+  <h2 class="section-head label"><span>${s.label}</span><span>${String(list.length).padStart(2, '0')}</span></h2>
+  <ol>
+${list.map(entry).join('\n')}
+  </ol>
+</section>`;
+  }).join('\n')}`,
 }));
 
-// ── Work list (menu: Projects) ──
-const groups = [['Commissions', projects.filter((p) => p.section !== 'personal')], ['Personal', projects.filter((p) => p.section === 'personal')]].filter(([, l]) => l.length);
-writeFileSync(`${OUT}/work.html`, layout({
-  title: `Work — ${info.name}`, root: '', page: 'work',
-  body: `<div class="index grid"><div class="list">
-${groups.map(([label, list]) => `<section class="group"><h2 class="label">${label} <span>${list.length}</span></h2><ul>
-${list.map((p) => `<li><a class="row" href="projects/${p.slug}.html" data-preview="${p.slug}"><span class="t">${p.client ? esc(p.client) + ' – ' : ''}${esc(p.title)}</span><span class="m">${esc(p.type)}</span></a></li>`).join('\n')}
-</ul></section>`).join('\n')}
-</div><aside class="preview" aria-hidden="true">
-${projects.filter((p) => p.cover).map((p, i) => `<figure class="pv" data-slug="${p.slug}"${i ? ' hidden' : ''}>${media({ image: p.cover }, '')}<figcaption><span>${esc(p.location)}</span></figcaption></figure>`).join('\n')}
-</aside></div>`,
-}));
+// Old links to the work list land on the index.
+writeFileSync(`${OUT}/work.html`, `<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=index.html#commissions"><link rel="canonical" href="index.html"><title>${esc(info.name)}</title><a href="index.html">${esc(info.name)}</a>`);
 
 // ── Project pages ──
 projects.forEach((p, i) => {
   const next = projects[(i + 1) % projects.length];
-  const meta = [['Client', p.client], ['Location', p.location], ['Type', p.type], ['Role', p.role]].filter(([, v]) => v);
-  const credits = (p.credits || []).filter((c) => c.role || c.name);
+  const s = sectionOf(p);
+  const meta = [['Client', p.client], ['Location', p.location], ['Year', p.year], ['Type', p.type], ['Role', p.role]].map(([k, v]) => [k, real(v)]).filter(([, v]) => v);
+  const credits = (p.credits || []).filter((c) => real(c.role) || real(c.name));
+  const description = real(p.description);
+  // Number every image so the contact sheet can jump to it.
+  let n = 0;
+  const fig = (item, root) => `<figure id="i${++n}">${media(item, root)}${item.caption ? `<figcaption>${esc(item.caption)}</figcaption>` : ''}</figure>`;
+  const sheet = allMedia(p);
   writeFileSync(`${OUT}/projects/${p.slug}.html`, layout({
-    title: `${p.title} — ${info.name}`, root: '../', page: 'project', description: p.description,
+    title: `${p.title} — ${info.name}`, root: '../', page: 'project', description,
     body: `<article class="project">
   <header class="p-head grid">
+    <p class="p-no label"><a href="../index.html#${s.id}">${s.label}</a> / ${p.no}</p>
     <h1>${esc(p.title)}</h1>
     <dl class="meta">${meta.map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join('')}</dl>
-    ${p.description ? `<div class="context">${paras(p.description)}</div>` : ''}
+    ${description ? `<div class="context">${paras(description)}</div>` : ''}
   </header>
-  ${(p.blocks || []).map((b) => block(b, '../')).join('\n  ')}
-  ${credits.length ? `<section class="credits grid"><h2 class="label">Credits</h2><dl class="meta">${credits.map((c) => `<dt>${esc(c.role)}</dt><dd>${esc(c.name)}</dd>`).join('')}</dl></section>` : ''}
-  ${next !== p ? `<a class="next" href="${next.slug}.html"><span class="label">Next project</span><span class="next-title">${esc(next.title)} →</span></a>` : ''}
+  ${sheet.length > 2 ? `<nav class="sheet" aria-label="All images">${sheet.map((m, k) => `<a href="#i${k + 1}"><img src="${esc(src(still(m.image), '../'))}" alt="" loading="lazy"><span class="label">${String(k + 1).padStart(2, '0')}</span></a>`).join('')}</nav>` : ''}
+  ${(p.blocks || []).map((b) => block(b, '../', fig)).join('\n  ')}
+  ${credits.length ? `<section class="credits grid"><h2 class="label">Credits</h2><dl class="meta">${credits.map((c) => `<dt>${esc(real(c.role))}</dt><dd>${esc(real(c.name))}</dd>`).join('')}</dl></section>` : ''}
+  ${next !== p ? `<a class="next" href="${next.slug}.html"><span class="label">Next · ${next.no}</span><span class="next-title">${esc(next.title)} →</span></a>` : ''}
 </article>`,
   }));
 });
@@ -142,9 +184,14 @@ projects.forEach((p, i) => {
 // ── Info ──
 const section = (s) => {
   let c = '';
-  if (s.style === 'list') c = `<ul class="entries">${(s.entries || []).map((e) => `<li><span>${esc(e.date)}</span><span>${md(e.text)}</span></li>`).join('')}</ul>`;
-  else if (s.style === 'large') c = `<p class="big">${md(s.text)}</p>`;
-  else c = paras(s.text);
+  if (s.style === 'list') {
+    const entries = (s.entries || []).filter((e) => real(e.text));
+    if (!entries.length) return '';
+    c = `<ul class="entries">${entries.map((e) => `<li><span>${esc(real(e.date))}</span><span>${md(e.text)}</span></li>`).join('')}</ul>`;
+  } else {
+    if (!real(s.text)) return '';
+    c = s.style === 'large' ? `<p class="big">${md(s.text)}</p>` : paras(s.text);
+  }
   return `<section><h2>${esc(s.title)}</h2>${c}</section>`;
 };
 const col = (name) => (info.sections || []).filter((s) => (s.column || 'left') === name).map(section).join('\n');
@@ -153,8 +200,8 @@ writeFileSync(`${OUT}/info.html`, layout({
   body: `<div class="info grid">
   <div class="info-col info-main"><div class="bio">${paras(info.bio)}</div>${col('left')}</div>
   <div class="info-col">${col('middle')}</div>
-  <div class="info-col info-contact">${col('right')}</div>
+  <div class="info-col info-contact">${email ? `<section><h2>Email</h2><p class="big"><a href="mailto:${esc(email)}">${esc(email)}</a></p></section>` : ''}${col('right')}</div>
 </div>`,
 }));
 
-console.log(`Built dist/: home (${slides.length} slides), ${projects.length} projects, info.`);
+console.log(`Built ${OUT}/: index (${projects.length} projects), info.`);
