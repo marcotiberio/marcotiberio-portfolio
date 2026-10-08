@@ -184,18 +184,28 @@ content:
         label: Based in
         type: string
       - name: bio
-        label: Bio (large text, top of the page)
+        label: Bio (large text, left column)
         type: text
         description: Use [text](https://link) for links. Empty line = new paragraph.
       - name: sections
         label: Sections
         type: object
-        description: Shown below the bio in this order. Drag to reorder. Sections that are empty or still contain [placeholders] are not shown.
+        description: Sections that are empty or still contain [placeholders] are not shown. Email and Instagram (above) are added to the right column automatically.
         list:
           collapsible:
             collapsed: true
-            summary: "{title} — {style}"
+            summary: "{title} — {column}"
         fields:
+          - name: column
+            label: Column
+            type: select
+            default: left
+            description: "Left: under the bio. Middle: dated lists such as exhibitions. Right: contacts."
+            options:
+              values:
+                - { name: left, label: Left }
+                - { name: middle, label: Middle }
+                - { name: right, label: Right }
           - name: title
             label: Heading
             type: string
@@ -205,11 +215,11 @@ content:
             default: text
             options:
               values:
-                - { name: text, label: Text }
+                - { name: text, label: Small text }
                 - { name: list, label: Dated list }
-                - { name: large, label: "Contact (shown beside the bio)" }
+                - { name: large, label: Large text }
           - name: text
-            label: Text (text or contact style)
+            label: Text (small or large style)
             type: text
           - name: entries
             label: Entries (dated list style)
