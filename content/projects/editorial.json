@@ -1,0 +1,21 @@
+{
+  "title": "Editorial",
+  "draft": true,
+  "order": 5,
+  "section": "commission",
+  "client": "[Clients]",
+  "type": "Editorial",
+  "location": "",
+  "role": "",
+  "year": "",
+  "description": "[Two or three lines about this body of work.]",
+  "cover": "",
+  "index": [],
+  "blocks": [],
+  "credits": [
+    {
+      "role": "Photography",
+      "name": "Marco Tiberio"
+    }
+  ]
+}
