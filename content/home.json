@@ -133,5 +133,11 @@
     "project": "content/projects/invisible-cities-calais.json",
     "fullbleed": true,
     "focus": "center"
+  },
+  {
+    "image": "media/home/screenshot-2020-05-06-at-115529-1.png",
+    "project": "content/projects/beyond-the-fortress.json",
+    "fullbleed": false,
+    "focus": "center"
   }
 ]
