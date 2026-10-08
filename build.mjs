@@ -15,7 +15,9 @@ const copyDir = (from, to) => {
 const OUT = process.env.OUT || 'dist';
 const read = (f) => JSON.parse(readFileSync(f, 'utf8'));
 const info = read('content/info.json');
-const home = read('content/home.json');
+// Slides live under "slides" (older files were a bare array).
+const homeFile = read('content/home.json');
+const home = Array.isArray(homeFile) ? homeFile : homeFile.slides || [];
 const projects = readdirSync('content/projects')
   .filter((f) => f.endsWith('.json'))
   .map((f) => ({ slug: f.replace(/\.json$/, ''), ...read(`content/projects/${f}`) }))

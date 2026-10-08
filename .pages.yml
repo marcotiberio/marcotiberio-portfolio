@@ -12,42 +12,46 @@ content:
     type: file
     path: content/home.json
     format: json
-    list:
-      collapsible:
-        collapsed: true
-        summary: "{index} — {image}"
     fields:
-      - name: image
-        label: Image
-        type: image
-        required: true
-        options:
-          path: media/home
-      - name: project
-        label: Linked project
-        type: reference
-        description: Optional. Shows the project title as the caption and links to it.
-        options:
-          collection: projects
-          value: "{path}"
-          label: "{title}"
-      - name: fullbleed
-        label: Full-bleed
-        type: boolean
-        default: true
-        description: On = the photo fills the screen. Off = the whole photo is shown, centred.
-      - name: focus
-        label: Crop focus
-        type: select
-        description: Which part of the photo stays visible when it is cropped to the screen (full-bleed only).
-        default: center
-        options:
-          values:
-            - { name: center, label: Centre }
-            - { name: top, label: Top }
-            - { name: bottom, label: Bottom }
-            - { name: left, label: Left }
-            - { name: right, label: Right }
+      - name: slides
+        label: Slides
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{index} — {image}"
+        fields:
+          - name: image
+            label: Image
+            type: image
+            required: true
+            options:
+              path: media/home
+          - name: project
+            label: Linked project
+            type: reference
+            description: Optional. Shows the project title as the caption and links to it.
+            options:
+              collection: projects
+              value: "{path}"
+              label: "{title}"
+          - name: fullbleed
+            label: Full-bleed
+            type: boolean
+            default: true
+            description: On = the photo fills the screen. Off = the whole photo is shown, centred.
+          - name: focus
+            label: Crop focus
+            type: select
+            description: Which part of the photo stays visible when it is cropped to the screen (full-bleed only).
+            default: center
+            options:
+              values:
+                - { name: center, label: Centre }
+                - { name: top, label: Top }
+                - { name: bottom, label: Bottom }
+                - { name: left, label: Left }
+                - { name: right, label: Right }
 
   # ── Projects ──────────────────────────────────
   - name: projects

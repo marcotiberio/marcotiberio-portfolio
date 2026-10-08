@@ -1,143 +1,145 @@
-[
-  {
-    "image": "media/citizenm-glasgow/02.jpg",
-    "project": "content/projects/citizenm-glasgow.json",
-    "fullbleed": true,
-    "focus": "center"
-  },
-  {
-    "image": "media/satellites/05.jpg",
-    "project": "content/projects/satellites.json",
-    "fullbleed": false,
-    "focus": "center"
-  },
-  {
-    "image": "media/home/mix-04.jpg",
-    "fullbleed": true,
-    "focus": "center"
-  },
-  {
-    "image": "media/home/mix-01.jpg",
-    "project": "content/projects/invisible-cities-calais.json",
-    "fullbleed": true,
-    "focus": "center"
-  },
-  {
-    "image": "media/home/mix-22.jpg",
-    "fullbleed": true,
-    "focus": "center"
-  },
-  {
-    "image": "media/home/mix-13.jpg",
-    "fullbleed": true,
-    "focus": "center"
-  },
-  {
-    "image": "media/home/mix-14.jpg",
-    "project": "content/projects/satellites.json",
-    "fullbleed": false,
-    "focus": "center"
-  },
-  {
-    "image": "media/home/mix-03.jpg",
-    "fullbleed": false,
-    "focus": "center"
-  },
-  {
-    "image": "media/citizenm-amsterdam-south/01.jpg",
-    "project": "content/projects/citizenm-amsterdam-south.json",
-    "fullbleed": true,
-    "focus": "center"
-  },
-  {
-    "image": "media/home/mix-09.jpg",
-    "project": "content/projects/satellites.json",
-    "fullbleed": true,
-    "focus": "center"
-  },
-  {
-    "image": "media/home/mix-12.jpg",
-    "fullbleed": false,
-    "focus": "center"
-  },
-  {
-    "image": "media/home/mix-05.jpg",
-    "fullbleed": true,
-    "focus": "center"
-  },
-  {
-    "image": "media/home/mix-16.jpg",
-    "project": "content/projects/satellites.json",
-    "fullbleed": false,
-    "focus": "center"
-  },
-  {
-    "image": "media/home/mix-17.jpg",
-    "fullbleed": true,
-    "focus": "center"
-  },
-  {
-    "image": "media/citizenm-market/01.jpg",
-    "project": "content/projects/citizenm-market.json",
-    "fullbleed": false,
-    "focus": "center"
-  },
-  {
-    "image": "media/home/mix-11.jpg",
-    "fullbleed": false,
-    "focus": "center"
-  },
-  {
-    "image": "media/home/mix-07.jpg",
-    "project": "content/projects/satellites.json",
-    "fullbleed": true,
-    "focus": "center"
-  },
-  {
-    "image": "media/home/mix-15.jpg",
-    "project": "content/projects/satellites.json",
-    "fullbleed": true,
-    "focus": "center"
-  },
-  {
-    "image": "media/home/mix-06.jpg",
-    "fullbleed": true,
-    "focus": "center"
-  },
-  {
-    "image": "media/citizenm-amsterdam-south/03.jpg",
-    "project": "content/projects/citizenm-amsterdam-south.json",
-    "fullbleed": true,
-    "focus": "center"
-  },
-  {
-    "image": "media/home/mix-08.jpg",
-    "project": "content/projects/satellites.json",
-    "fullbleed": true,
-    "focus": "center"
-  },
-  {
-    "image": "media/satellites/03.jpg",
-    "project": "content/projects/satellites.json",
-    "fullbleed": false,
-    "focus": "center"
-  },
-  {
-    "image": "media/home/mix-10.jpg",
-    "project": "content/projects/satellites.json",
-    "fullbleed": true,
-    "focus": "center"
-  },
-  {
-    "image": "media/home/immorefugee-01.jpg",
-    "project": "content/projects/invisible-cities-calais.json",
-    "fullbleed": true,
-    "focus": "center"
-  },
-  {
-    "image": "media/home/screenshot-2020-05-06-at-115529-1.png",
-    "project": "content/projects/beyond-the-fortress.json",
-    "fullbleed": false,
-    "focus": "center"
-  }
-]
+{
+  "slides": [
+    {
+      "image": "media/citizenm-glasgow/02.jpg",
+      "project": "content/projects/citizenm-glasgow.json",
+      "fullbleed": true,
+      "focus": "center"
+    },
+    {
+      "image": "media/satellites/05.jpg",
+      "project": "content/projects/satellites.json",
+      "fullbleed": false,
+      "focus": "center"
+    },
+    {
+      "image": "media/home/mix-04.jpg",
+      "fullbleed": true,
+      "focus": "center"
+    },
+    {
+      "image": "media/home/mix-01.jpg",
+      "project": "content/projects/invisible-cities-calais.json",
+      "fullbleed": true,
+      "focus": "center"
+    },
+    {
+      "image": "media/home/mix-22.jpg",
+      "fullbleed": true,
+      "focus": "center"
+    },
+    {
+      "image": "media/home/mix-13.jpg",
+      "fullbleed": true,
+      "focus": "center"
+    },
+    {
+      "image": "media/home/mix-14.jpg",
+      "project": "content/projects/satellites.json",
+      "fullbleed": false,
+      "focus": "center"
+    },
+    {
+      "image": "media/home/mix-03.jpg",
+      "fullbleed": false,
+      "focus": "center"
+    },
+    {
+      "image": "media/citizenm-amsterdam-south/01.jpg",
+      "project": "content/projects/citizenm-amsterdam-south.json",
+      "fullbleed": true,
+      "focus": "center"
+    },
+    {
+      "image": "media/home/mix-09.jpg",
+      "project": "content/projects/satellites.json",
+      "fullbleed": true,
+      "focus": "center"
+    },
+    {
+      "image": "media/home/mix-12.jpg",
+      "fullbleed": false,
+      "focus": "center"
+    },
+    {
+      "image": "media/home/mix-05.jpg",
+      "fullbleed": true,
+      "focus": "center"
+    },
+    {
+      "image": "media/home/mix-16.jpg",
+      "project": "content/projects/satellites.json",
+      "fullbleed": false,
+      "focus": "center"
+    },
+    {
+      "image": "media/home/mix-17.jpg",
+      "fullbleed": true,
+      "focus": "center"
+    },
+    {
+      "image": "media/citizenm-market/01.jpg",
+      "project": "content/projects/citizenm-market.json",
+      "fullbleed": false,
+      "focus": "center"
+    },
+    {
+      "image": "media/home/mix-11.jpg",
+      "fullbleed": false,
+      "focus": "center"
+    },
+    {
+      "image": "media/home/mix-07.jpg",
+      "project": "content/projects/satellites.json",
+      "fullbleed": true,
+      "focus": "center"
+    },
+    {
+      "image": "media/home/mix-15.jpg",
+      "project": "content/projects/satellites.json",
+      "fullbleed": true,
+      "focus": "center"
+    },
+    {
+      "image": "media/home/mix-06.jpg",
+      "fullbleed": true,
+      "focus": "center"
+    },
+    {
+      "image": "media/citizenm-amsterdam-south/03.jpg",
+      "project": "content/projects/citizenm-amsterdam-south.json",
+      "fullbleed": true,
+      "focus": "center"
+    },
+    {
+      "image": "media/home/mix-08.jpg",
+      "project": "content/projects/satellites.json",
+      "fullbleed": true,
+      "focus": "center"
+    },
+    {
+      "image": "media/satellites/03.jpg",
+      "project": "content/projects/satellites.json",
+      "fullbleed": false,
+      "focus": "center"
+    },
+    {
+      "image": "media/home/mix-10.jpg",
+      "project": "content/projects/satellites.json",
+      "fullbleed": true,
+      "focus": "center"
+    },
+    {
+      "image": "media/home/immorefugee-01.jpg",
+      "project": "content/projects/invisible-cities-calais.json",
+      "fullbleed": true,
+      "focus": "center"
+    },
+    {
+      "image": "media/home/screenshot-2020-05-06-at-115529-1.png",
+      "project": "content/projects/beyond-the-fortress.json",
+      "fullbleed": false,
+      "focus": "center"
+    }
+  ]
+}
