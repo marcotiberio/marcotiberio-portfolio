@@ -73,7 +73,7 @@ const layout = ({ title, body, root, page, description }) => `<!doctype html>
 <body class="page-${page}">
 <header class="site-header">
   <a class="site-name" href="${root}index.html">${esc(info.name)}</a>
-  <nav><a href="${root}info.html"${page === 'info' ? ' aria-current="page"' : ''}>Info</a></nav>
+  <nav><a href="${root}work.html"${page === 'work' ? ' aria-current="page"' : page === 'project' ? ' aria-current="true"' : ''}>Projects</a><a href="${root}info.html"${page === 'info' ? ' aria-current="page"' : ''}>Info</a></nav>
 </header>
 <main>
 ${body}
@@ -106,7 +106,7 @@ ${slides.map((s, i) => `  <div class="slide${s.fullbleed ? '' : ' slide--fit'}${
 </section>`,
 }));
 
-// ── Work list (not in the menu, reachable at /work.html) ──
+// ── Work list (menu: Projects) ──
 const groups = [['Commissions', projects.filter((p) => p.section !== 'personal')], ['Personal', projects.filter((p) => p.section === 'personal')]].filter(([, l]) => l.length);
 writeFileSync(`${OUT}/work.html`, layout({
   title: `Work — ${info.name}`, root: '', page: 'work',
