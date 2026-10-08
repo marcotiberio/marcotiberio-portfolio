@@ -6,7 +6,9 @@ Edit the site at **app.pagescms.org**. Every save publishes the site automatical
 
 - `content/home.json` — photographs for the home page image fire (edited as **Home (image fire)**)
 - `content/projects/*.json` — one file per project (edited as **Projects**)
-- `content/info.json` — bio, Info sections, email and the Research / Commissions page texts (edited as **Info**)
+- `content/info.json` — bio, Info sections and email (edited as **Info**)
+- `content/research.json`, `content/commissions.json` — each page's intro (on/off), button and footer line (edited as **Research page** / **Commissions page**)
+- `content/menu.json` — which menu items are shown (edited as **Menu**)
 - `media/` — all images and videos
 - `build.mjs` — turns content into the site in `dist/`. The page markup and its Tailwind classes live here.
 - `src/style.css` — Tailwind setup: colours (with dark mode), fonts, breakpoints and a few base styles. Compiled by the build.

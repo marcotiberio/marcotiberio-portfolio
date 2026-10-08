@@ -37,6 +37,84 @@ content:
               value: "{path}"
               label: "{title}"
 
+  # ── Research and Commissions pages ────────────
+  - name: research
+    label: Research page
+    type: file
+    path: content/research.json
+    format: json
+    fields:
+      - name: show_intro
+        label: Show intro
+        type: boolean
+        default: true
+        description: Off = the page starts straight with the list of projects.
+      - name: statement
+        label: Statement (large text)
+        type: string
+      - name: intro
+        label: Introduction (small text next to the statement)
+        type: text
+        description: Use [text](https://link) for links. Empty line = new paragraph.
+      - name: button
+        label: Button text
+        type: string
+        description: Opens an email to the address on Info. Leave empty for no button.
+      - name: footer
+        label: Footer line (large text at the bottom of the page and its projects)
+        type: string
+
+  - name: commissions
+    label: Commissions page
+    type: file
+    path: content/commissions.json
+    format: json
+    fields:
+      - name: show_intro
+        label: Show intro
+        type: boolean
+        default: true
+        description: Off = the page starts straight with the list of projects.
+      - name: statement
+        label: Statement (large text)
+        type: string
+      - name: intro
+        label: Introduction (small text next to the statement)
+        type: text
+        description: Use [text](https://link) for links. Empty line = new paragraph.
+      - name: button
+        label: Button text
+        type: string
+        description: Opens an email to the address on Info. Leave empty for no button.
+      - name: footer
+        label: Footer line (large text at the bottom of the page and its projects)
+        type: string
+
+  # ── Menu ──────────────────────────────────────
+  - name: menu
+    label: Menu
+    type: file
+    path: content/menu.json
+    format: json
+    fields:
+      - name: research
+        label: Show "Research"
+        type: boolean
+        default: true
+      - name: commissions
+        label: Show "Commissions"
+        type: boolean
+        default: true
+      - name: info
+        label: Show "Info"
+        type: boolean
+        default: true
+      - name: contact
+        label: Show "Contact"
+        type: boolean
+        default: true
+        description: Hidden pages still exist and can be reached by their link; they are only left out of the menu.
+
   # ── Projects ──────────────────────────────────
   - name: projects
     label: Projects
@@ -190,20 +268,6 @@ content:
       - name: description
         label: Site description (for search engines)
         type: string
-      - name: statement
-        label: Commissions page — statement, large text
-        type: string
-      - name: intro
-        label: Commissions page — introduction
-        type: text
-        description: Small text next to the statement. Empty line = new paragraph.
-      - name: research_statement
-        label: Research page (home) — statement, large text
-        type: string
-      - name: research_intro
-        label: Research page (home) — introduction
-        type: text
-        description: Small text next to the statement. Empty line = new paragraph.
       - name: email
         label: Email
         type: string

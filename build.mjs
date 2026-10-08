@@ -26,13 +26,15 @@ const real = (s) => {
 };
 
 // Two sections, each on its own page and never mixed. The home page is the image fire.
-// "personal" is the stored value for Research.
+// "personal" is the stored value for Research. Each page's intro, button and footer
+// line are edited in the CMS (content/research.json, content/commissions.json).
 const SECTIONS = [
-  { key: 'personal', page: 'research.html', label: 'Research', prefix: 'R', statement: 'research_statement', intro: 'research_intro', cta: 'Get in touch',
-    footer: 'For exhibitions, publications and collaborations.' },
-  { key: 'commission', page: 'commissions.html', label: 'Commissions', prefix: 'C', statement: 'statement', intro: 'intro', cta: 'Enquire about a commission',
-    footer: 'Available for commissions in hospitality, architecture and interiors.' },
-];
+  { key: 'personal', id: 'research', page: 'research.html', label: 'Research', prefix: 'R' },
+  { key: 'commission', id: 'commissions', page: 'commissions.html', label: 'Commissions', prefix: 'C' },
+].map((s) => ({ ...s, text: read(`content/${s.id}.json`) }));
+// Which menu items are shown (Menu in the CMS). Missing = shown.
+const menu = existsSync('content/menu.json') ? read('content/menu.json') : {};
+const inMenu = (id) => menu[id] !== false;
 const COMMISSIONS = SECTIONS[1];
 const sectionOf = (p) => SECTIONS.find((s) => s.key === p.section) || COMMISSIONS;
 const projects = readdirSync('content/projects')
@@ -129,13 +131,13 @@ const layout = ({ title, body, root, page, description, section = COMMISSIONS, s
 <body class="${home ? 'h-dvh overflow-hidden bg-black' : 'px-5 md:px-10'}">
 <header class="${home ? 'fixed inset-x-0 top-0 px-[14px] py-4 md:px-[34px] md:py-6' : 'sticky top-0 bg-bg py-5 md:py-7'} z-2 flex flex-wrap md:flex-nowrap justify-between items-baseline gap-x-6 gap-y-2">
   <a class="${home ? `${tag} text-white` : 'w-full sm:w-auto'} font-medium" href="${root}index.html">${esc(info.name)}</a>
-  <nav class="flex ${home ? 'gap-1' : 'gap-4 md:gap-7'}">${SECTIONS.map((s) => `<a class="${navLink}" href="${root}${s.page}"${current(s)}>${s.label}</a>`).join('')}<a class="${navLink}" href="${root}info.html"${page === 'info' ? ' aria-current="page"' : ''}>Info</a><a class="${home ? navLink : 'text-ink'}" href="${contactHref(root)}">Contact</a></nav>
+  <nav class="flex ${home ? 'gap-1' : 'gap-4 md:gap-7'}">${SECTIONS.filter((s) => inMenu(s.id)).map((s) => `<a class="${navLink}" href="${root}${s.page}"${current(s)}>${s.label}</a>`).join('')}${inMenu('info') ? `<a class="${navLink}" href="${root}info.html"${page === 'info' ? ' aria-current="page"' : ''}>Info</a>` : ''}${inMenu('contact') ? `<a class="${home ? navLink : 'text-ink'}" href="${contactHref(root)}">Contact</a>` : ''}</nav>
 </header>
 <main>
 ${body}
 </main>
 ${home || page === 'info' ? '' : `<footer class="${GRID} pt-7 pb-10 gap-y-6 items-start border-t border-ink">
-  <p class="${FULL} md:col-[1/7] ${LARGE} max-w-[24ch]">${section.footer}</p>
+  ${real(section.text.footer) ? `<p class="${FULL} md:col-[1/7] ${LARGE} max-w-[24ch]">${esc(real(section.text.footer))}</p>` : ''}
   <p class="${FULL} md:col-[7/13] ${LARGE} [&_a]:border-b [&_a]:border-current [&_a:hover]:text-soft">${email ? `<a href="mailto:${esc(email)}">${esc(email)}</a>` : `<a href="${root}info.html">Contact details</a>`}${instagram ? `<br><a href="https://www.instagram.com/${esc(instagram)}/">Instagram</a>` : ''}</p>
   <p class="${FULL} pt-10 ${LABEL} text-soft">${esc(info.name)} · ${esc(real(info.location) || 'Amsterdam')}</p>
 </footer>`}
@@ -171,16 +173,21 @@ const entry = (p) => {
 };
 SECTIONS.forEach((s) => {
   const list = projects.filter((p) => sectionOf(p) === s);
-  const statement = real(info[s.statement]);
-  const intro = real(info[s.intro]);
+  // The intro (statement, text and button) can be switched off in the CMS;
+  // the catalogue then starts right under the header.
+  const t = s.text;
+  const show = t.show_intro !== false;
+  const statement = real(t.statement);
+  const intro = real(t.intro);
+  const button = real(t.button);
   writeFileSync(`${OUT}/${s.page}`, layout({
     title: `${s.label} — ${info.name}`, root: '', page: s.key, section: s,
     description: statement && intro ? `${statement} ${intro.replace(/\s+/g, ' ')}` : '',
-    body: `<section class="${GRID} gap-y-8 items-end pt-10 pb-18 md:pt-18 md:pb-30">
-  ${statement ? `<h1 class="${FULL} md:col-[1/9] text-[clamp(36px,5.2vw,76px)] leading-none font-medium tracking-[-.025em] text-balance">${md(statement)}</h1>` : ''}
-  ${intro ? `<div class="${FULL} md:col-[9/13] grid gap-3 text-[14px] max-w-[40ch]">${paras(intro)}<p><a class="border-b border-current hover:text-soft" href="${contactHref('')}">${email ? s.cta : 'Contact'} →</a></p></div>` : ''}
-</section>
-${list.length ? `<section class="pb-18 md:pb-30">
+    body: `${show ? `<section class="${GRID} gap-y-8 items-end pt-10 pb-18 md:pt-18 md:pb-30">
+  <h1 class="${FULL} md:col-[1/9] text-[clamp(36px,5.2vw,76px)] leading-none font-medium tracking-[-.025em] text-balance">${statement ? md(statement) : s.label}</h1>
+  ${intro || button ? `<div class="${FULL} md:col-[9/13] grid gap-3 text-[14px] max-w-[40ch]">${paras(intro)}${button ? `<p><a class="border-b border-current hover:text-soft" href="${contactHref('')}">${esc(button)} →</a></p>` : ''}</div>` : ''}
+</section>` : `<h1 class="sr-only">${s.label}</h1>`}
+${list.length ? `<section class="${show ? '' : 'pt-6 md:pt-10 '}pb-18 md:pb-30">
   <h2 class="${LABEL} flex justify-between pb-3 border-b border-ink"><span>${s.label}</span><span>${String(list.length).padStart(2, '0')}</span></h2>
   <ol class="group/list">
 ${list.map(entry).join('\n')}
