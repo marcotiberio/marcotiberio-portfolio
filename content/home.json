@@ -11,25 +11,19 @@
       "focus": "center"
     },
     {
-      "image": "media/home/tibo2016999cimmorefugeed1.jpg",
+      "image": "media/home/mix-09.jpg",
+      "project": "content/projects/satellites.json",
       "fullbleed": true,
       "focus": "center"
     },
     {
-      "image": "media/home/mix-07.jpg",
-      "project": "content/projects/satellites.json",
+      "image": "media/home/tibo2016999cimmorefugeed1.jpg",
       "fullbleed": true,
       "focus": "center"
     },
     {
       "image": "media/home/mix-12.jpg",
       "fullbleed": false,
-      "focus": "center"
-    },
-    {
-      "image": "media/home/mix-09.jpg",
-      "project": "content/projects/satellites.json",
-      "fullbleed": true,
       "focus": "center"
     },
     {
@@ -41,16 +35,6 @@
     {
       "image": "media/citizenm-glasgow/02.jpg",
       "project": "content/projects/citizenm-glasgow.json",
-      "fullbleed": true,
-      "focus": "center"
-    },
-    {
-      "image": "media/home/mix-04.jpg",
-      "fullbleed": true,
-      "focus": "center"
-    },
-    {
-      "image": "media/home/mix-22.jpg",
       "fullbleed": true,
       "focus": "center"
     },
@@ -73,17 +57,6 @@
     {
       "image": "media/home/mix-11.jpg",
       "fullbleed": false,
-      "focus": "center"
-    },
-    {
-      "image": "media/home/mix-06.jpg",
-      "fullbleed": true,
-      "focus": "center"
-    },
-    {
-      "image": "media/home/mix-08.jpg",
-      "project": "content/projects/satellites.json",
-      "fullbleed": true,
       "focus": "center"
     }
   ]
