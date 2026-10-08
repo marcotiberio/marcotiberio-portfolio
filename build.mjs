@@ -23,10 +23,13 @@ const real = (s) => {
   return t.replace(/\[([^\]]+)\]\(([^)\s[\]]+)\)/g, '').includes('[') ? '' : t;
 };
 
-// Sections: commissions first, then research. "personal" is the stored value for Research.
+// Two sections, each on its own page and never mixed: commissions are the home page,
+// research has its own. "personal" is the stored value for Research.
 const SECTIONS = [
-  { key: 'commission', id: 'commissions', label: 'Commissions', prefix: 'C' },
-  { key: 'personal', id: 'research', label: 'Research', prefix: 'R' },
+  { key: 'commission', page: 'index.html', label: 'Commissions', prefix: 'C', statement: 'statement', intro: 'intro', cta: 'Enquire about a commission',
+    footer: 'Available for commissions in hospitality, architecture and interiors.' },
+  { key: 'personal', page: 'research.html', label: 'Research', prefix: 'R', statement: 'research_statement', intro: 'research_intro', cta: 'Get in touch',
+    footer: 'For exhibitions, publications and collaborations.' },
 ];
 const sectionOf = (p) => SECTIONS.find((s) => s.key === p.section) || SECTIONS[0];
 const projects = readdirSync('content/projects')
@@ -83,7 +86,7 @@ const email = real(info.email);
 const instagram = real(info.instagram).replace(/^@/, '');
 const contactHref = (root) => (email ? `mailto:${email}` : `${root}info.html`);
 
-const layout = ({ title, body, root, page, description }) => `<!doctype html>
+const layout = ({ title, body, root, page, description, section = SECTIONS[0] }) => `<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -98,13 +101,13 @@ const layout = ({ title, body, root, page, description }) => `<!doctype html>
 <body class="page-${page}">
 <header class="site-header">
   <a class="site-name" href="${root}index.html">${esc(info.name)}</a>
-  <nav>${SECTIONS.map((s) => `<a href="${root}index.html#${s.id}">${s.label}</a>`).join('')}<a href="${root}info.html"${page === 'info' ? ' aria-current="page"' : ''}>Info</a><a class="nav-contact" href="${contactHref(root)}">Contact</a></nav>
+  <nav>${SECTIONS.map((s) => `<a href="${root}${s.page}"${page === s.key ? ' aria-current="page"' : page === 'project' && section === s ? ' aria-current="true"' : ''}>${s.label}</a>`).join('')}<a href="${root}info.html"${page === 'info' ? ' aria-current="page"' : ''}>Info</a><a class="nav-contact" href="${contactHref(root)}">Contact</a></nav>
 </header>
 <main>
 ${body}
 </main>
 <footer class="site-footer grid">
-  <p class="f-lead">Available for commissions in hospitality, architecture and interiors.</p>
+  <p class="f-lead">${section.footer}</p>
   <p class="f-contact">${email ? `<a href="mailto:${esc(email)}">${esc(email)}</a>` : `<a href="${root}info.html">Contact details</a>`}${instagram ? `<br><a href="https://www.instagram.com/${esc(instagram)}/">Instagram</a>` : ''}</p>
   <p class="f-base label">${esc(info.name)} · ${esc(real(info.location) || 'Amsterdam')}</p>
 </footer>
@@ -130,33 +133,35 @@ const entry = (p) => {
   <div class="e-tiles" style="--n:${tiles.length}">${tiles.map((t) => `<figure><img src="${esc(src(still(t.image), ''))}" alt="${esc(t.alt)}" loading="lazy"></figure>`).join('')}</div>
 </a></li>`;
 };
-const statement = real(info.statement);
-const intro = real(info.intro);
-writeFileSync(`${OUT}/index.html`, layout({
-  title: info.name, root: '', page: 'home',
-  body: `<section class="intro grid">
+SECTIONS.forEach((s) => {
+  const list = projects.filter((p) => sectionOf(p) === s);
+  const statement = real(info[s.statement]);
+  const intro = real(info[s.intro]);
+  writeFileSync(`${OUT}/${s.page}`, layout({
+    title: s.page === 'index.html' ? info.name : `${s.label} — ${info.name}`, root: '', page: s.key, section: s,
+    description: statement && intro ? `${statement} ${intro.replace(/\s+/g, ' ')}` : '',
+    body: `<section class="intro grid">
   ${statement ? `<h1>${md(statement)}</h1>` : ''}
-  ${intro ? `<div class="intro-sub">${paras(intro)}<p><a class="cta" href="${contactHref('')}">${email ? 'Enquire about a commission' : 'Contact'} →</a></p></div>` : ''}
+  ${intro ? `<div class="intro-sub">${paras(intro)}<p><a class="cta" href="${contactHref('')}">${email ? s.cta : 'Contact'} →</a></p></div>` : ''}
 </section>
-${SECTIONS.map((s) => {
-    const list = projects.filter((p) => sectionOf(p) === s);
-    if (!list.length) return '';
-    return `<section class="catalogue" id="${s.id}">
+${list.length ? `<section class="catalogue">
   <h2 class="section-head label"><span>${s.label}</span><span>${String(list.length).padStart(2, '0')}</span></h2>
   <ol>
 ${list.map(entry).join('\n')}
   </ol>
-</section>`;
-  }).join('\n')}`,
-}));
+</section>` : ''}`,
+  }));
+});
 
 // Old links to the work list land on the index.
-writeFileSync(`${OUT}/work.html`, `<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=index.html#commissions"><link rel="canonical" href="index.html"><title>${esc(info.name)}</title><a href="index.html">${esc(info.name)}</a>`);
+writeFileSync(`${OUT}/work.html`, `<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=index.html"><link rel="canonical" href="index.html"><title>${esc(info.name)}</title><a href="index.html">${esc(info.name)}</a>`);
 
 // ── Project pages ──
-projects.forEach((p, i) => {
-  const next = projects[(i + 1) % projects.length];
+projects.forEach((p) => {
+  // "Next" stays inside the project's own section.
   const s = sectionOf(p);
+  const own = projects.filter((x) => sectionOf(x) === s);
+  const next = own[(own.indexOf(p) + 1) % own.length];
   const meta = [['Client', p.client], ['Location', p.location], ['Year', p.year], ['Type', p.type], ['Role', p.role]].map(([k, v]) => [k, real(v)]).filter(([, v]) => v);
   const credits = (p.credits || []).filter((c) => real(c.role) || real(c.name));
   const description = real(p.description);
@@ -165,10 +170,10 @@ projects.forEach((p, i) => {
   const fig = (item, root) => `<figure id="i${++n}">${media(item, root)}${item.caption ? `<figcaption>${esc(item.caption)}</figcaption>` : ''}</figure>`;
   const sheet = allMedia(p);
   writeFileSync(`${OUT}/projects/${p.slug}.html`, layout({
-    title: `${p.title} — ${info.name}`, root: '../', page: 'project', description,
+    title: `${p.title} — ${info.name}`, root: '../', page: 'project', section: s, description,
     body: `<article class="project">
   <header class="p-head grid">
-    <p class="p-no label"><a href="../index.html#${s.id}">${s.label}</a> / ${p.no}</p>
+    <p class="p-no label"><a href="../${s.page}">${s.label}</a> / ${p.no}</p>
     <h1>${esc(p.title)}</h1>
     <dl class="meta">${meta.map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join('')}</dl>
     ${description ? `<div class="context">${paras(description)}</div>` : ''}

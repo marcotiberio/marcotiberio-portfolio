@@ -160,12 +160,19 @@ content:
         label: Site description (for search engines)
         type: string
       - name: statement
-        label: Home statement (large text)
+        label: Commissions page (home) — statement, large text
         type: string
       - name: intro
-        label: Home introduction (small text, next to the statement)
+        label: Commissions page (home) — introduction
         type: text
-        description: Empty line = new paragraph.
+        description: Small text next to the statement. Empty line = new paragraph.
+      - name: research_statement
+        label: Research page — statement, large text
+        type: string
+      - name: research_intro
+        label: Research page — introduction
+        type: text
+        description: Small text next to the statement. Empty line = new paragraph.
       - name: email
         label: Email
         type: string
