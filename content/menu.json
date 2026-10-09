@@ -1,6 +1,6 @@
 {
   "research": true,
-  "commissions": true,
+  "commissions": false,
   "info": true,
   "contact": true
 }
