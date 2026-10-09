@@ -1,63 +1,41 @@
 {
   "slides": [
     {
-      "image": "media/home/dscf235920221896490o.jpg",
-      "fullbleed": true,
-      "focus": "center"
+      "image": "media/home/tibo2016999cimmorefugeea3.jpg"
     },
     {
-      "image": "media/home/tibo2016999cimmorefugeea3.jpg",
-      "fullbleed": true,
-      "focus": "center"
+      "image": "media/home/dscf235920221896490o.jpg"
     },
     {
       "image": "media/home/mix-09.jpg",
-      "project": "content/projects/satellites.json",
-      "fullbleed": true,
-      "focus": "center"
+      "project": "content/projects/satellites.json"
     },
     {
-      "image": "media/home/tibo2016999cimmorefugeed1.jpg",
-      "fullbleed": true,
-      "focus": "center"
+      "image": "media/home/tibo2016999cimmorefugeed1.jpg"
     },
     {
-      "image": "media/home/mix-12.jpg",
-      "fullbleed": false,
-      "focus": "center"
+      "image": "media/home/mix-12.jpg"
     },
     {
       "image": "media/home/screenshot-2020-05-06-at-115529-1.png",
-      "project": "content/projects/beyond-the-fortress.json",
-      "fullbleed": false,
-      "focus": "center"
+      "project": "content/projects/beyond-the-fortress.json"
     },
     {
       "image": "media/citizenm-glasgow/02.jpg",
-      "project": "content/projects/citizenm-glasgow.json",
-      "fullbleed": true,
-      "focus": "center"
+      "project": "content/projects/citizenm-glasgow.json"
     },
     {
       "image": "media/citizenm-amsterdam-south/01.jpg",
-      "project": "content/projects/citizenm-amsterdam-south.json",
-      "fullbleed": true,
-      "focus": "center"
+      "project": "content/projects/citizenm-amsterdam-south.json"
     },
     {
-      "image": "media/home/mix-05.jpg",
-      "fullbleed": true,
-      "focus": "center"
+      "image": "media/home/mix-05.jpg"
     },
     {
-      "image": "media/home/mix-17.jpg",
-      "fullbleed": true,
-      "focus": "center"
+      "image": "media/home/mix-17.jpg"
     },
     {
-      "image": "media/home/mix-11.jpg",
-      "fullbleed": false,
-      "focus": "center"
+      "image": "media/home/mix-11.jpg"
     }
   ]
 }
