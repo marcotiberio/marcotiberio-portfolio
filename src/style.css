@@ -1,0 +1,40 @@
+/* Portfolio — Tailwind input. The markup and its utility classes live in build.mjs;
+   `node build.mjs` compiles this file to dist/assets/style.css.
+   White page, one sans, mono for catalogue labels. 12-column grid; phones below 801px. */
+@import "tailwindcss" source(none);
+@source "../build.mjs";
+
+@theme {
+  --font-sans: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+
+  --color-bg: #ffffff;
+  --color-ink: #141414;
+  --color-soft: #6b6b6b;   /* labels, metadata */
+  --color-faded: #a3a3a1;
+  --color-line: #e4e4e2;
+
+  /* sm: two images side by side; md: the 12-column layout. */
+  --breakpoint-sm: 30.0625rem;  /* 481px */
+  --breakpoint-md: 50.0625rem;  /* 801px */
+}
+
+@layer base {
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-bg: #121212; --color-ink: #ececea; --color-soft: #9a9a98; --color-faded: #5c5c5a; --color-line: #2a2a29;
+      color-scheme: dark;
+    }
+  }
+  html { scroll-behavior: smooth; scroll-padding-top: 64px; }
+  @variant md { html { scroll-padding-top: 88px; } }
+  body {
+    font: 400 15px/1.5 var(--font-sans);
+    background: var(--color-bg);
+    color: var(--color-ink);
+    -webkit-font-smoothing: antialiased;
+  }
+  a:focus-visible, button:focus-visible { outline: 1px solid currentColor; outline-offset: 3px; }
+  img, video { width: 100%; object-fit: cover; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+}

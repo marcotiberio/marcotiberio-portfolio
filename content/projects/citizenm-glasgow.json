@@ -1,6 +1,6 @@
 {
   "title": "Glasgow",
-  "draft": false,
+  "draft": true,
   "order": 1,
   "section": "commission",
   "client": "citizenM",

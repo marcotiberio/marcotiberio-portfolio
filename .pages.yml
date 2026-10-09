@@ -6,16 +6,17 @@ media:
   extensions: [jpg, jpeg, png, webp, gif, mp4]
 
 content:
-  # ── Home carousel ─────────────────────────────
+  # ── Home: image fire ──────────────────────────
   - name: home
-    label: Home (carousel)
+    label: Home (image fire)
     type: file
     path: content/home.json
     format: json
     fields:
       - name: slides
-        label: Slides
+        label: Photographs
         type: object
+        description: The photographs fired onto the home page, in random order. The more, the better.
         list:
           collapsible:
             collapsed: true
@@ -30,28 +31,89 @@ content:
           - name: project
             label: Linked project
             type: reference
-            description: Optional. Shows the project title as the caption and links to it.
+            description: Optional. When a visitor pauses on this photograph, its project title is shown as a link.
             options:
               collection: projects
               value: "{path}"
               label: "{title}"
-          - name: fullbleed
-            label: Full-bleed
-            type: boolean
-            default: true
-            description: On = the photo fills the screen. Off = the whole photo is shown, centred.
-          - name: focus
-            label: Crop focus
-            type: select
-            description: Which part of the photo stays visible when it is cropped to the screen (full-bleed only).
-            default: center
-            options:
-              values:
-                - { name: center, label: Centre }
-                - { name: top, label: Top }
-                - { name: bottom, label: Bottom }
-                - { name: left, label: Left }
-                - { name: right, label: Right }
+
+  # ── Research and Commissions pages ────────────
+  - name: research
+    label: Research page
+    type: file
+    path: content/research.json
+    format: json
+    fields:
+      - name: show_intro
+        label: Show intro
+        type: boolean
+        default: true
+        description: Off = the page starts straight with the list of projects.
+      - name: statement
+        label: Statement (large text)
+        type: string
+      - name: intro
+        label: Introduction (small text next to the statement)
+        type: text
+        description: Use [text](https://link) for links. Empty line = new paragraph.
+      - name: button
+        label: Button text
+        type: string
+        description: Opens an email to the address on Info. Leave empty for no button.
+      - name: footer
+        label: Footer line (large text at the bottom of the page and its projects)
+        type: string
+
+  - name: commissions
+    label: Commissions page
+    type: file
+    path: content/commissions.json
+    format: json
+    fields:
+      - name: show_intro
+        label: Show intro
+        type: boolean
+        default: true
+        description: Off = the page starts straight with the list of projects.
+      - name: statement
+        label: Statement (large text)
+        type: string
+      - name: intro
+        label: Introduction (small text next to the statement)
+        type: text
+        description: Use [text](https://link) for links. Empty line = new paragraph.
+      - name: button
+        label: Button text
+        type: string
+        description: Opens an email to the address on Info. Leave empty for no button.
+      - name: footer
+        label: Footer line (large text at the bottom of the page and its projects)
+        type: string
+
+  # ── Menu ──────────────────────────────────────
+  - name: menu
+    label: Menu
+    type: file
+    path: content/menu.json
+    format: json
+    fields:
+      - name: research
+        label: Show "Research"
+        type: boolean
+        default: true
+      - name: commissions
+        label: Show "Commissions"
+        type: boolean
+        default: true
+      - name: info
+        label: Show "Info"
+        type: boolean
+        default: true
+      - name: contact
+        label: Show "Contact"
+        type: boolean
+        default: true
+        description: Hidden pages still exist and can be reached by their link; they are only left out of the menu.
 
   # ── Projects ──────────────────────────────────
   - name: projects
@@ -80,7 +142,7 @@ content:
       - name: order
         label: Order
         type: number
-        description: Position in the project order (1 = first). Also sets the "Next project" sequence.
+        description: Position within its section (1 = first). Sets the catalogue number (C01, R01 …).
       - name: section
         label: Section
         type: select
@@ -88,7 +150,7 @@ content:
         options:
           values:
             - { name: commission, label: Commission }
-            - { name: personal, label: Personal }
+            - { name: personal, label: Research }
       - name: client
         label: Client
         type: string
@@ -105,7 +167,7 @@ content:
       - name: year
         label: Year
         type: string
-        description: Stored, not shown on the site.
+        description: Shown in the index and on the project page.
       - name: description
         label: Description
         type: text
@@ -113,7 +175,19 @@ content:
       - name: cover
         label: Cover image
         type: image
-        description: Shown when hovering the project in the Work list.
+        description: Used in the index only when the project has no other images.
+      - name: index
+        label: Index images (up to 4)
+        type: object
+        list: true
+        description: The four photographs shown for this project on the home page, all cropped to the same frame. Leave empty to use the first four images below.
+        fields:
+          - name: image
+            label: Image
+            type: image
+          - name: alt
+            label: Description (for screen readers)
+            type: string
       - name: blocks
         label: Images & video
         type: block
@@ -194,6 +268,16 @@ content:
       - name: description
         label: Site description (for search engines)
         type: string
+      - name: email
+        label: Email
+        type: string
+        description: Shown in the header, the footer of every page and on Info.
+      - name: instagram
+        label: Instagram handle
+        type: string
+      - name: location
+        label: Based in
+        type: string
       - name: bio
         label: Bio (large text, left column)
         type: text
@@ -201,6 +285,7 @@ content:
       - name: sections
         label: Sections
         type: object
+        description: Sections that are empty or still contain [placeholders] are not shown. Email and Instagram (above) are added to the right column automatically.
         list:
           collapsible:
             collapsed: true
@@ -210,6 +295,7 @@ content:
             label: Column
             type: select
             default: left
+            description: "Left: under the bio. Middle: dated lists such as exhibitions. Right: contacts."
             options:
               values:
                 - { name: left, label: Left }

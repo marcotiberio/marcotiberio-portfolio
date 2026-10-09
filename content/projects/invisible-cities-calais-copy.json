@@ -1,0 +1,56 @@
+{
+  "title": "Invisible Cities - Calais",
+  "draft": false,
+  "order": 4,
+  "section": "personal",
+  "type": "Zine",
+  "location": "Calais",
+  "description": "Homes built by refugees in the Calais camp, the “New Jungle”: 500,000 m² on the edge of the city, enclosed by a five-metre fence, with a range of housing types, both established and new. The series became Immorefugee, a property guide to the camp in the style of a holiday-let brochure, selected for the Kassel Photobook Award 2016.",
+  "cover": "media/tibo2016999cimmorefugeed1.jpg",
+  "blocks": [
+    {
+      "type": "images",
+      "layout": "full",
+      "images": [
+        {}
+      ],
+      "narrow": false
+    },
+    {
+      "type": "images",
+      "layout": "row",
+      "images": [
+        {
+          "image": "media/tibo2016999cimmorefugeea3.jpg"
+        },
+        {
+          "image": "media/tibo2016999cimmorefugeed1-1.jpg"
+        }
+      ],
+      "narrow": false
+    },
+    {
+      "type": "images",
+      "layout": "offset",
+      "images": [
+        {
+          "image": "media/tibo2016999cimmorefugeed7.jpg"
+        }
+      ],
+      "narrow": false
+    },
+    {
+      "type": "images",
+      "layout": "row",
+      "images": [
+        {
+          "image": "media/tibo2016999cimmorefugeef3.jpg"
+        },
+        {
+          "image": "media/tibo2016999cimmorefugeel2.jpg"
+        }
+      ],
+      "narrow": false
+    }
+  ]
+}

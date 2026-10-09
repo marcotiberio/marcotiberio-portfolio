@@ -10,25 +10,31 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500&family=JetBrains+Mono:wght@500&display=swap">
 <link rel="stylesheet" href="../assets/style.css">
 </head>
-<body class="page-project">
-<header class="site-header">
-  <a class="site-name" href="../index.html">Marco Tiberio</a>
-  <nav><a href="../work.html" aria-current="true">Projects</a><a href="../info.html">Info</a></nav>
+<body class="px-5 md:px-10">
+<header class="sticky top-0 bg-bg py-5 md:py-7 z-2 flex flex-wrap md:flex-nowrap justify-between items-baseline gap-x-6 gap-y-2">
+  <a class="w-full sm:w-auto font-medium" href="../index.html">Marco Tiberio</a>
+  <nav class="flex gap-4 md:gap-7"><a class="text-soft hover:text-ink aria-[current]:text-ink" href="../research.html" aria-current="true">Research</a><a class="text-soft hover:text-ink aria-[current]:text-ink" href="../commissions.html">Commissions</a><a class="text-soft hover:text-ink aria-[current]:text-ink" href="../info.html">Info</a><a class="text-ink" href="mailto:tiberiomrc@gmail.com">Contact</a></nav>
 </header>
 <main>
-<article class="project">
-  <header class="p-head grid">
-    <h1>Beyond the Fortress</h1>
-    <dl class="meta"><dt>Location</dt><dd>Lampedusa</dd><dt>Type</dt><dd>Documentary series</dd></dl>
-    <div class="context"><p>A short documentary series about people living on Lampedusa and how they deal with the refugee crisis. Four portraits: a doctor, an archivist, a volunteer and a witness.</p></div>
+<article class="grid gap-14 md:gap-24 pt-8 md:pt-16 pb-30">
+  <header class="grid grid-cols-12 gap-x-4 md:gap-x-6 gap-y-5 items-start">
+    <p class="col-span-full font-mono text-[11px] leading-[1.4] font-medium uppercase tracking-[.06em] text-soft"><a class="hover:text-ink" href="../research.html">Research</a> / R04</p>
+    <h1 class="col-span-full md:col-[1/7] text-[clamp(40px,5vw,64px)] leading-none font-medium tracking-[-.02em] text-balance">Beyond the Fortress</h1>
+    <dl class="col-span-full md:col-[7/10] grid grid-cols-[minmax(80px,max-content)_1fr] gap-x-5 gap-y-1.5 text-[14px] [&_dt]:text-soft"><dt>Location</dt><dd>Lampedusa</dd><dt>Type</dt><dd>Documentary series</dd></dl>
+    <div class="col-span-full md:col-[10/13] grid gap-2.5 text-[14px] max-w-[42ch]"><p>A short documentary series about people living on Lampedusa and how they deal with the refugee crisis. Four portraits: a doctor, an archivist, a volunteer and a witness.</p></div>
   </header>
-  <div class="b b-full" style="--n:1"><figure><iframe src="https://player.vimeo.com/video/130830404?dnt=1&amp;title=0&amp;byline=0&amp;portrait=0" title="Pietro" allow="fullscreen; picture-in-picture" loading="lazy" style="aspect-ratio:16/9"></iframe><figcaption>Pietro</figcaption></figure></div>
-  <div class="b b-pair" style="--n:2"><figure><iframe src="https://player.vimeo.com/video/131536660?dnt=1&amp;title=0&amp;byline=0&amp;portrait=0" title="Nino" allow="fullscreen; picture-in-picture" loading="lazy" style="aspect-ratio:16/9"></iframe><figcaption>Nino</figcaption></figure><figure><iframe src="https://player.vimeo.com/video/132416294?dnt=1&amp;title=0&amp;byline=0&amp;portrait=0" title="Veronica" allow="fullscreen; picture-in-picture" loading="lazy" style="aspect-ratio:16/9"></iframe><figcaption>Veronica</figcaption></figure></div>
-  <div class="b b-full" style="--n:1"><figure><iframe src="https://player.vimeo.com/video/134859634?dnt=1&amp;title=0&amp;byline=0&amp;portrait=0" title="Paola" allow="fullscreen; picture-in-picture" loading="lazy" style="aspect-ratio:16/9"></iframe><figcaption>Paola</figcaption></figure></div>
-  <section class="credits grid"><h2 class="label">Credits</h2><dl class="meta"><dt>Studio</dt><dd>Defrost Studio</dd></dl></section>
-  <a class="next" href="immigrant-or-expat.html"><span class="label">Next project</span><span class="next-title">Immigrant or Expat? →</span></a>
+  
+  <div class="grid grid-cols-1 gap-4 md:gap-6 items-start"><figure><iframe class="block w-full aspect-video border-0 bg-line" src="https://player.vimeo.com/video/130830404?dnt=1&amp;title=0&amp;byline=0&amp;portrait=0" title="Pietro" allow="fullscreen; picture-in-picture" loading="lazy"></iframe><figcaption class="mt-2 text-[13px] text-soft">Pietro</figcaption></figure></div>
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 items-start"><figure><iframe class="block w-full aspect-video border-0 bg-line" src="https://player.vimeo.com/video/131536660?dnt=1&amp;title=0&amp;byline=0&amp;portrait=0" title="Nino" allow="fullscreen; picture-in-picture" loading="lazy"></iframe><figcaption class="mt-2 text-[13px] text-soft">Nino</figcaption></figure><figure><iframe class="block w-full aspect-video border-0 bg-line" src="https://player.vimeo.com/video/132416294?dnt=1&amp;title=0&amp;byline=0&amp;portrait=0" title="Veronica" allow="fullscreen; picture-in-picture" loading="lazy"></iframe><figcaption class="mt-2 text-[13px] text-soft">Veronica</figcaption></figure></div>
+  <div class="grid grid-cols-1 gap-4 md:gap-6 items-start"><figure><iframe class="block w-full aspect-video border-0 bg-line" src="https://player.vimeo.com/video/134859634?dnt=1&amp;title=0&amp;byline=0&amp;portrait=0" title="Paola" allow="fullscreen; picture-in-picture" loading="lazy"></iframe><figcaption class="mt-2 text-[13px] text-soft">Paola</figcaption></figure></div>
+  <section class="grid grid-cols-12 gap-x-4 md:gap-x-6 pt-5 border-t border-line"><h2 class="col-span-full md:col-[1/7] font-mono text-[11px] leading-[1.4] font-medium uppercase tracking-[.06em] text-soft">Credits</h2><dl class="col-span-full md:col-[7/10] grid grid-cols-[minmax(80px,max-content)_1fr] gap-x-5 gap-y-1.5 text-[14px] [&_dt]:text-soft"><dt>Studio</dt><dd>Defrost Studio</dd></dl></section>
 </article>
 </main>
-<script src="../assets/main.js" defer></script>
+<footer class="grid grid-cols-12 gap-x-4 md:gap-x-6 pt-7 pb-10 gap-y-6 items-start border-t border-ink">
+  <p class="col-span-full md:col-[1/7] text-[clamp(20px,1.9vw,27px)] leading-[1.2] tracking-[-.005em] max-w-[24ch]">For exhibitions, publications and collaborations.</p>
+  <p class="col-span-full md:col-[7/13] text-[clamp(20px,1.9vw,27px)] leading-[1.2] tracking-[-.005em] [&_a]:border-b [&_a]:border-current [&_a:hover]:text-soft"><a href="mailto:tiberiomrc@gmail.com">tiberiomrc@gmail.com</a></p>
+  <p class="col-span-full pt-10 font-mono text-[11px] leading-[1.4] font-medium uppercase tracking-[.06em] text-soft">Marco Tiberio · Amsterdam</p>
+</footer>
+
 </body>
 </html>

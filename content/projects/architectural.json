@@ -1,0 +1,139 @@
+{
+  "title": "Architectural",
+  "draft": false,
+  "order": 4,
+  "section": "commission",
+  "index": [
+    {
+      "image": "media/citizenm-glasgow/02.jpg",
+      "alt": "Long communal table with coloured chairs facing the shelving wall, street view through floor-to-ceiling glass"
+    },
+    {
+      "image": "media/citizenm-glasgow/04.jpg",
+      "alt": "Mint armchairs on an ochre rug, the Royal Conservatoire facade through the window"
+    },
+    {
+      "image": "media/citizenm-amsterdam-south/01.jpg",
+      "alt": "View from the entrance through the round glass shower to the bed and window"
+    },
+    {
+      "image": "media/citizenm-amsterdam-south/03.jpg",
+      "alt": "Wall-to-wall bed under a window onto trees"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "images",
+      "layout": "full",
+      "images": [
+        {
+          "image": "media/citizenm-glasgow/02.jpg",
+          "caption": "citizenM Glasgow",
+          "alt": "Long communal table with coloured chairs facing the shelving wall, street view through floor-to-ceiling glass"
+        }
+      ],
+      "narrow": false
+    },
+    {
+      "type": "images",
+      "layout": "row",
+      "images": [
+        {
+          "image": "media/citizenm-glasgow/01.jpg",
+          "caption": "citizenM Glasgow",
+          "alt": "Lime and green sofas around a low wooden table beside the shelving wall"
+        },
+        {
+          "image": "media/citizenm-glasgow/04.jpg",
+          "caption": "citizenM Glasgow",
+          "alt": "Mint armchairs on an ochre rug, the Royal Conservatoire facade through the window"
+        }
+      ],
+      "narrow": false
+    },
+    {
+      "type": "images",
+      "layout": "offset",
+      "images": [
+        {
+          "image": "media/citizenm-glasgow/05.jpg",
+          "caption": "citizenM Glasgow",
+          "alt": "Bar with red counter, a long leather banquette with desk lamps and green chairs along the window"
+        }
+      ],
+      "note": "[Optional caption — e.g. the bar and work lounge on the first floor.]",
+      "narrow": false
+    },
+    {
+      "type": "images",
+      "layout": "inset",
+      "images": [
+        {
+          "image": "media/citizenm-glasgow/03.jpg",
+          "caption": "citizenM Glasgow",
+          "alt": "Quieter lounge with grey sofas, red armchairs and sheer curtains"
+        }
+      ],
+      "narrow": false
+    },
+    {
+      "type": "images",
+      "layout": "full",
+      "images": [
+        {
+          "image": "media/citizenm-glasgow/06.jpg",
+          "caption": "citizenM Glasgow",
+          "alt": "Grey sofa with smiley cushions, an orange sofa and paper lanterns beyond"
+        }
+      ],
+      "narrow": false
+    },
+    {
+      "type": "images",
+      "layout": "full",
+      "images": [
+        {
+          "image": "media/citizenm-amsterdam-south/01.jpg",
+          "caption": "citizenM Amsterdam South",
+          "alt": "View from the entrance through the round glass shower to the bed and window"
+        }
+      ],
+      "narrow": false
+    },
+    {
+      "type": "images",
+      "layout": "row",
+      "images": [
+        {
+          "image": "media/citizenm-amsterdam-south/03.jpg",
+          "caption": "citizenM Amsterdam South",
+          "alt": "Wall-to-wall bed under a window onto trees"
+        },
+        {
+          "image": "media/citizenm-amsterdam-south/02.jpg",
+          "caption": "citizenM Amsterdam South",
+          "alt": "From the bed towards the desk, shower and washbasin"
+        }
+      ],
+      "narrow": false
+    },
+    {
+      "type": "images",
+      "layout": "inset",
+      "images": [
+        {
+          "image": "media/citizenm-amsterdam-south/04.jpg",
+          "caption": "citizenM Amsterdam South",
+          "alt": "Room seen from the bed at an angle, lamps lit"
+        }
+      ],
+      "narrow": false
+    }
+  ],
+  "credits": [
+    {
+      "role": "Photography",
+      "name": "Marco Tiberio"
+    }
+  ]
+}
