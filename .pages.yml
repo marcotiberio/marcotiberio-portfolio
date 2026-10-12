@@ -63,6 +63,23 @@ content:
       - name: footer
         label: Footer line (large text at the bottom of the page and its projects)
         type: string
+      - name: seo
+        label: Search engines & link previews
+        type: object
+        description: All optional. Empty fields are filled in automatically.
+        fields:
+          - name: title
+            label: Title
+            type: string
+            description: Default — the page name and site name.
+          - name: description
+            label: Description
+            type: text
+            description: Default — the statement and introduction. About 150 characters.
+          - name: image
+            label: Share image
+            type: image
+            description: Default — the first photograph of the first project.
 
   - name: commissions
     label: Commissions page
@@ -89,6 +106,23 @@ content:
       - name: footer
         label: Footer line (large text at the bottom of the page and its projects)
         type: string
+      - name: seo
+        label: Search engines & link previews
+        type: object
+        description: All optional. Empty fields are filled in automatically.
+        fields:
+          - name: title
+            label: Title
+            type: string
+            description: Default — the page name and site name.
+          - name: description
+            label: Description
+            type: text
+            description: Default — the statement and introduction. About 150 characters.
+          - name: image
+            label: Share image
+            type: image
+            description: Default — the first photograph of the first project.
 
   # ── Menu ──────────────────────────────────────
   - name: menu
@@ -254,6 +288,23 @@ content:
           - name: name
             label: Name
             type: string
+      - name: seo
+        label: Search engines & link previews
+        type: object
+        description: All optional. Empty fields are filled in automatically.
+        fields:
+          - name: title
+            label: Title
+            type: string
+            description: Default — the project title and site name.
+          - name: description
+            label: Description
+            type: text
+            description: Default — the start of the project description. About 150 characters.
+          - name: image
+            label: Share image
+            type: image
+            description: Default — the first index photograph.
 
   # ── Info ──────────────────────────────────────
   - name: info
@@ -268,6 +319,35 @@ content:
       - name: description
         label: Site description (for search engines)
         type: string
+      - name: url
+        label: Website address
+        type: string
+        description: e.g. https://tibo.studio. Used for search engines, the sitemap and link previews. Leave empty to use the Netlify address.
+      - name: seo
+        label: Search engines & link previews
+        type: object
+        description: All optional. Empty fields are filled in automatically.
+        fields:
+          - name: title
+            label: Title
+            type: string
+            description: Home page title in search results and browser tabs. Default — "Marco Tiberio — Photographer, Amsterdam".
+          - name: description
+            label: Description
+            type: text
+            description: Leave empty to use "Site description" above. About 150 characters.
+          - name: image
+            label: Share image
+            type: image
+            description: Shown when the site is shared (WhatsApp, LinkedIn …). Default — the first home photograph.
+          - name: job_title
+            label: Profession
+            type: string
+            description: Tells search engines what you do. Default — Photographer.
+          - name: info_description
+            label: Info page description
+            type: text
+            description: Leave empty to use the start of the bio.
       - name: email
         label: Email
         type: string

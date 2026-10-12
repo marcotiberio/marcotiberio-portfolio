@@ -110,20 +110,55 @@ const email = real(info.email);
 const instagram = real(info.instagram).replace(/^@/, '');
 const contactHref = (root) => (email ? `mailto:${email}` : `${root}info.html`);
 
-const layout = ({ title, body, root, page, description, section = COMMISSIONS, script }) => {
+// ── Search engines and link previews ──
+// The site's public address: "Website address" on Info, else the one Netlify sets
+// during the build. Without it, the canonical links, share images and sitemap are left out.
+const SITE = (real(info.url) || process.env.URL || '').replace(/\/+$/, '');
+const abs = (path) => (SITE ? `${SITE}/${String(path || '').replace(/^\//, '')}` : '');
+// Search results show about 155 characters of the description.
+const clip = (t, n = 155) => {
+  const s = String(t || '').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/\s+/g, ' ').trim();
+  return s.length > n ? `${s.slice(0, n - 1).replace(/\s+\S*$/, '')}…` : s;
+};
+// Optional overrides from the "Search engines & link previews" group in the CMS.
+// Empty fields fall back to the automatic values.
+const seoOf = (o) => ({ title: real(o?.seo?.title), description: real(o?.seo?.description), image: o?.seo?.image || '' });
+const SEO = seoOf(info);
+const JOB = real(info.seo?.job_title) || 'Photographer';
+const PERSON = {
+  '@type': 'Person', name: info.name, jobTitle: JOB,
+  ...(SITE && { url: `${SITE}/` }),
+  ...(email && { email: `mailto:${email}` }),
+  ...(real(info.location) && { address: { '@type': 'PostalAddress', addressLocality: real(info.location) } }),
+  ...(instagram && { sameAs: [`https://www.instagram.com/${instagram}/`] }),
+};
+const ld = (data) => `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', ...data }).replace(/</g, '\\u003c')}</script>`;
+const sitemap = [];
+
+// path: the page's address within the site ('' for home). image: the share preview.
+const layout = ({ title, body, root, page, path, description, image, schema, section = COMMISSIONS, script }) => {
   // On the home page the header floats over the image fire as small black tags.
   const home = page === 'home';
   const tag = 'bg-black px-1.5 py-0.5';
   const navLink = home ? `${tag} text-[#b5b5b3] hover:text-white` : 'text-soft hover:text-ink aria-[current]:text-ink';
   const current = (s) => (page === s.key ? ' aria-current="page"' : page === 'project' && section === s ? ' aria-current="true"' : '');
+  const desc = clip(description || info.description);
+  const url = abs(path);
+  const img = image && abs(still(image));
+  if (url) sitemap.push(url);
   return `<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(title)}</title>
-<meta name="description" content="${esc(description || info.description)}">
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<meta name="description" content="${esc(desc)}">
+${url ? `<link rel="canonical" href="${esc(url)}">\n<meta property="og:url" content="${esc(url)}">\n` : ''}<meta property="og:type" content="${page === 'project' ? 'article' : page === 'info' ? 'profile' : 'website'}">
+<meta property="og:site_name" content="${esc(info.name)}">
+<meta property="og:title" content="${esc(title)}">
+<meta property="og:description" content="${esc(desc)}">
+<meta property="og:locale" content="en_GB">
+${img ? `<meta property="og:image" content="${esc(img)}">\n<meta name="twitter:card" content="summary_large_image">\n` : '<meta name="twitter:card" content="summary">\n'}${schema ? `${ld(schema)}\n` : ''}<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500&family=JetBrains+Mono:wght@500&display=swap">
 <link rel="stylesheet" href="${root}assets/style.css">
@@ -181,8 +216,10 @@ SECTIONS.forEach((s) => {
   const intro = real(t.intro);
   const button = real(t.button);
   writeFileSync(`${OUT}/${s.page}`, layout({
-    title: `${s.label} — ${info.name}`, root: '', page: s.key, section: s,
-    description: statement && intro ? `${statement} ${intro.replace(/\s+/g, ' ')}` : '',
+    title: seoOf(t).title || `${s.label} — ${info.name}`, root: '', page: s.key, path: s.page, section: s,
+    description: seoOf(t).description || (statement && intro ? `${statement} ${intro}` : statement || intro),
+    image: seoOf(t).image || (list.length && indexMedia(list[0])[0]?.image) || SEO.image,
+    schema: { '@type': 'CollectionPage', name: `${s.label} — ${info.name}`, ...(SITE && { url: abs(s.page) }), author: PERSON, ...(SITE && { hasPart: list.map((p) => ({ '@type': 'CreativeWork', name: p.title, url: abs(`projects/${p.slug}.html`) })) }) },
     body: `${show ? `<section class="${GRID} gap-y-8 items-end pt-10 pb-18 md:pt-18 md:pb-30">
   <h1 class="${FULL} md:col-[1/9] text-[clamp(36px,5.2vw,76px)] leading-none font-medium tracking-[-.025em] text-balance">${statement ? md(statement) : s.label}</h1>
   ${intro || button ? `<div class="${FULL} md:col-[9/13] grid gap-3 text-[14px] max-w-[40ch]">${paras(intro)}${button ? `<p><a class="border-b border-current hover:text-soft" href="${contactHref('')}">${esc(button)} →</a></p>` : ''}</div>` : ''}
@@ -207,8 +244,11 @@ const fire = (Array.isArray(homeFile) ? homeFile : homeFile.slides || []).filter
 });
 const fireTag = 'fixed bottom-5 md:bottom-7 z-2 bg-black px-1.5 py-0.5 text-white';
 writeFileSync(`${OUT}/index.html`, layout({
-  title: info.name, root: '', page: 'home', script: 'fire.js',
-  body: `<section class="fire fixed inset-0 bg-black" aria-label="Photographs, shown in rapid succession">
+  title: SEO.title || `${info.name} — ${JOB}${real(info.location) ? `, ${real(info.location)}` : ''}`, root: '', page: 'home', path: '', script: 'fire.js',
+  description: SEO.description, image: SEO.image || fire[0]?.src,
+  schema: { '@type': 'WebSite', name: info.name, ...(SITE && { url: `${SITE}/` }), description: real(info.description), author: PERSON },
+  body: `<h1 class="sr-only">${esc(info.name)}${real(info.description) ? ` — ${esc(real(info.description))}` : ''}</h1>
+<section class="fire fixed inset-0 bg-black" aria-label="Photographs, shown in rapid succession">
   <canvas class="block size-full cursor-pointer"></canvas>
   <a class="fire-caption ${fireTag} left-[14px] md:left-[34px] underline-offset-4 decoration-1 hover:underline" hidden></a>
   <button class="fire-toggle ${fireTag} right-[14px] md:right-[34px] cursor-pointer" type="button">Pause</button>
@@ -217,7 +257,7 @@ writeFileSync(`${OUT}/index.html`, layout({
 }));
 
 // Old links to the work list land on the commissions.
-writeFileSync(`${OUT}/work.html`, `<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=commissions.html"><link rel="canonical" href="commissions.html"><title>${esc(info.name)}</title><a href="commissions.html">${esc(info.name)}</a>`);
+writeFileSync(`${OUT}/work.html`, `<!doctype html><meta charset="utf-8"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url=commissions.html"><link rel="canonical" href="commissions.html"><title>${esc(info.name)}</title><a href="commissions.html">${esc(info.name)}</a>`);
 
 // ── Project pages ──
 projects.forEach((p) => {
@@ -225,12 +265,23 @@ projects.forEach((p) => {
   const meta = [['Client', p.client], ['Location', p.location], ['Year', p.year], ['Type', p.type], ['Role', p.role]].map(([k, v]) => [k, real(v)]).filter(([, v]) => v);
   const credits = (p.credits || []).filter((c) => real(c.role) || real(c.name));
   const description = real(p.description);
+  // With no description yet, search results get a line made from the project's facts.
+  const summary = seoOf(p).description || description || `${p.title}${facts(p).length ? `, ${facts(p).join(', ')}` : ''}. Photography by ${info.name}.`;
   // Number every image so the contact sheet can jump to it.
   let n = 0;
   const fig = (item, root, cls = '') => `<figure id="i${++n}"${cls ? ` class="${cls}"` : ''}>${media(item, root)}${caption(item.caption)}</figure>`;
   const sheet = allMedia(p);
   writeFileSync(`${OUT}/projects/${p.slug}.html`, layout({
-    title: `${p.title} — ${info.name}`, root: '../', page: 'project', section: s, description,
+    title: seoOf(p).title || `${p.title} — ${info.name}`, root: '../', page: 'project', path: `projects/${p.slug}.html`, section: s, description: summary,
+    image: seoOf(p).image || indexMedia(p)[0]?.image || SEO.image,
+    schema: {
+      '@type': 'CreativeWork', name: p.title, description: clip(summary, 500), author: PERSON, creator: PERSON,
+      ...(SITE && { url: abs(`projects/${p.slug}.html`) }),
+      ...(real(p.year) && { dateCreated: real(p.year) }),
+      ...(real(p.location) && { locationCreated: { '@type': 'Place', name: real(p.location) } }),
+      ...(real(p.type) && { genre: real(p.type) }),
+      ...(SITE && { image: allMedia(p).slice(0, 12).map((m) => ({ '@type': 'ImageObject', contentUrl: abs(still(m.image)), ...(real(m.alt) && { description: real(m.alt) }) })) }),
+    },
     body: `<article class="grid gap-14 md:gap-24 pt-8 md:pt-16 pb-30">
   <header class="${GRID} gap-y-5 items-start">
     <p class="${FULL} ${LABEL} text-soft"><a class="hover:text-ink" href="../${s.page}">${s.label}</a> / ${p.no}</p>
@@ -264,13 +315,24 @@ const infoSection = (s) => {
 const col = (name) => (info.sections || []).filter((s) => (s.column || 'left') === name).map(infoSection).join('\n');
 const COL = 'grid content-start';
 writeFileSync(`${OUT}/info.html`, layout({
-  title: `Info — ${info.name}`, root: '', page: 'info',
+  title: `Info — ${info.name}`, root: '', page: 'info', path: 'info.html', description: real(info.seo?.info_description) || info.bio,
+  image: SEO.image || fire[0]?.src,
+  schema: { '@type': 'ProfilePage', mainEntity: { ...PERSON, ...(real(info.bio) && { description: clip(info.bio, 500) }) } },
   body: `<div class="${GRID} items-start gap-y-10 md:gap-y-0 pt-6 md:pt-10 pb-30 text-[14px] leading-[1.3] [&_a:hover]:text-soft">
   <div class="${FULL} md:col-[1/7] ${COL} gap-7"><div class="grid gap-[.5em] ${LARGE} text-pretty [&_a]:underline [&_a]:underline-offset-4 [&_a]:decoration-1">${paras(info.bio)}</div>${col('left')}</div>
   <div class="${FULL} md:col-[7/10] ${COL} gap-7">${col('middle')}</div>
   <div class="${FULL} md:col-[10/13] ${COL} gap-5">${email ? `<section><h2>General enquiries</h2><p class="${BIG}"><a href="mailto:${esc(email)}">${esc(email)}</a></p></section>` : ''}${col('right')}${instagram ? `<section><h2>Follow</h2><p class="${BIG}"><a href="https://www.instagram.com/${esc(instagram)}/">Instagram</a></p></section>` : ''}</div>
 </div>`,
 }));
+
+// ── Sitemap and robots.txt ──
+// Every published page; hidden projects are never built, so they never appear.
+if (SITE) writeFileSync(`${OUT}/sitemap.xml`, `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${sitemap.map((u) => `  <url><loc>${esc(u)}</loc></url>`).join('\n')}
+</urlset>
+`);
+writeFileSync(`${OUT}/robots.txt`, `User-agent: *\nAllow: /\n${SITE ? `\nSitemap: ${SITE}/sitemap.xml\n` : ''}`);
 
 // Compile Tailwind from the classes above.
 execFileSync('node_modules/.bin/tailwindcss', ['-i', 'src/style.css', '-o', `${OUT}/assets/style.css`, '--minify'], { stdio: ['ignore', 'ignore', 'inherit'] });

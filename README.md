@@ -26,6 +26,7 @@ Edit the site at **app.pagescms.org**. Every save publishes the site automatical
 - **Home:** the photographs fired onto the home page, in random order. "Linked project" names the photograph (and links to its project) when a visitor pauses. Add as many as you like.
 - **Projects:** "Order" sets the position (1 = first). Tick "Hidden (draft)" to take a project offline. "Images & video" is a list of blocks: Images (layout: full width, centred, offset + note, side by side) or Vimeo.
 - **Info:** each section has a column (left / middle / right) and a style (small text, dated list, large text).
+- **Search engines and link previews:** each page gets a description, a share image (its first photograph) and structured data automatically. To change them, open **Search engines & link previews** on Info, on the Research and Commissions pages, or on any project; empty fields stay automatic. **Website address** on Info sets the domain. The sitemap is at `/sitemap.xml`.
 - Links in any text: `[text](https://…)`. Empty line = new paragraph.
 
 ## Preview locally (optional)
