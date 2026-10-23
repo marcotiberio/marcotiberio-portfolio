@@ -1,6 +1,6 @@
 {
   "title": ".market",
-  "draft": true,
+  "draft": false,
   "order": 3,
   "section": "commission",
   "client": "citizenM",
