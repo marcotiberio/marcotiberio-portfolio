@@ -7,6 +7,24 @@
   "location": "Lampedusa",
   "description": "A short documentary series about people living on Lampedusa and how they deal with the refugee crisis. Four portraits: a doctor, an archivist, a volunteer and a witness.",
   "cover": "media/beyond-the-fortress/03.jpg",
+  "index": [
+    {
+      "image": "media/beyond-the-fortress/video-01.jpg",
+      "alt": "Still from Beyond the Fortress: Pietro"
+    },
+    {
+      "image": "media/beyond-the-fortress/video-02.jpg",
+      "alt": "Still from Beyond the Fortress: Nino"
+    },
+    {
+      "image": "media/beyond-the-fortress/video-03.jpg",
+      "alt": "Still from Beyond the Fortress: Veronica"
+    },
+    {
+      "image": "media/beyond-the-fortress/video-04.jpg",
+      "alt": "Still from Beyond the Fortress: Paola"
+    }
+  ],
   "blocks": [
     {
       "type": "vimeo",

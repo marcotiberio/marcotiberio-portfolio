@@ -3,7 +3,7 @@
   "draft": false,
   "order": 4,
   "section": "personal",
-  "type": "Zine",
+  "type": "Zine + Exhibition",
   "location": "Calais",
   "description": "Useful guide to the properties in the refugee camp of Calais. The residential area of the “New Jungle” is a large residential area of 500,000m2 in the outskirts of Calais, France. Surrounded by a 5 meters-high metallic fence and equipped with running water and lights, the “New Jungle” offers different housing typologies, both old and newly built.\n\n🏆 Selected at Kassel Photobook Awars 2016 🏆\n\n“This zine by the Defrost Studio is a welcome antidote to the many photographic projects that have emerged around the refugee crisis. Using the notorious and now destroyed Jungle camp in Calais, they copy the graphics and tone of a holiday let brochure. It is wicked and brilliant at the same time” - Martin Parr",
   "cover": "media/tibo2016999cimmorefugeed1.jpg",
@@ -57,6 +57,45 @@
         {
           "image": "media/invisible-cities-calais/06.jpg",
           "alt": "Centre spread: a dome shelter in tall grass"
+        }
+      ],
+      "narrow": false
+    },
+    {
+      "type": "images",
+      "layout": "full",
+      "images": [
+        {
+          "image": "media/invisible-cities-calais/07.jpg",
+          "alt": "Shopfront of Tique Art Space with Immorefugee listings hung in the window like an estate agency",
+          "caption": "Immorefugee – The Agency, Tique Art Space, Antwerp, 29/03/2018 – 18/04/2018"
+        }
+      ],
+      "narrow": false
+    },
+    {
+      "type": "images",
+      "layout": "offset",
+      "images": [
+        {
+          "image": "media/invisible-cities-calais/08.jpg",
+          "alt": "Two passers-by walking past the agency window"
+        }
+      ],
+      "note": "For three weeks the zine became an estate agency: the camp's shelters were listed in the window of Tique Art Space in Antwerp, the way properties are shown on the high street.",
+      "narrow": false
+    },
+    {
+      "type": "images",
+      "layout": "row",
+      "images": [
+        {
+          "image": "media/invisible-cities-calais/09.jpg",
+          "alt": "Inside the agency: armchairs and a waiting table facing the window of listings"
+        },
+        {
+          "image": "media/invisible-cities-calais/10.jpg",
+          "alt": "Agency desk with a computer showing the Immorefugee logo"
         }
       ],
       "narrow": false

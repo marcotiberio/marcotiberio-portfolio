@@ -1,0 +1,154 @@
+{
+  "title": "Sedimenta",
+  "draft": false,
+  "order": 8,
+  "section": "personal",
+  "type": "Satellite imagery",
+  "location": "Romagna, Italy",
+  "year": "2023",
+  "description": "In May 2023 Romagna, in northern Italy, flooded. Two weeks brought the rain of seven months: 23 rivers overflowed, 43 towns went under water, at least 17 people died and 50,000 were displaced.\n\nFloods are pictured on land. Sedimenta looks at the sea, where soil washed off the hills by the rivers drew plumes of sediment along more than 33 km of coast, visible from space. The images show the damage we set in motion, and the strange beauty it leaves behind.",
+  "cover": "media/sedimenta/16.jpg",
+  "index": [
+    {
+      "image": "media/sedimenta/16.jpg",
+      "alt": "Teal sediment folding over itself, green water below"
+    },
+    {
+      "image": "media/sedimenta/15.jpg",
+      "alt": "Swirls of bright cyan sediment against dark water"
+    },
+    {
+      "image": "media/sedimenta/14.jpg",
+      "alt": "A wall of cyan sediment pressing into dark open sea"
+    },
+    {
+      "image": "media/sedimenta/13.jpg",
+      "alt": "Teal water with white plumes rising at the lower right"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "images",
+      "layout": "row",
+      "images": [
+        {
+          "image": "media/sedimenta/16.jpg",
+          "alt": "Teal sediment folding over itself, green water below"
+        },
+        {
+          "image": "media/sedimenta/15.jpg",
+          "alt": "Swirls of bright cyan sediment against dark water"
+        }
+      ],
+      "narrow": false
+    },
+    {
+      "type": "images",
+      "layout": "row",
+      "images": [
+        {
+          "image": "media/sedimenta/14.jpg",
+          "alt": "A wall of cyan sediment pressing into dark open sea"
+        },
+        {
+          "image": "media/sedimenta/13.jpg",
+          "alt": "Teal water with white plumes rising at the lower right"
+        }
+      ],
+      "narrow": false
+    },
+    {
+      "type": "images",
+      "layout": "row",
+      "images": [
+        {
+          "image": "media/sedimenta/12.jpg",
+          "alt": "Dark green water, a boat wake at the top, pale sediment below"
+        },
+        {
+          "image": "media/sedimenta/11.jpg",
+          "alt": "Green water with the frayed edge of a sediment plume"
+        }
+      ],
+      "narrow": false
+    },
+    {
+      "type": "images",
+      "layout": "row",
+      "images": [
+        {
+          "image": "media/sedimenta/10.jpg",
+          "alt": "Pale sediment fanning out into deep green water"
+        },
+        {
+          "image": "media/sedimenta/09.jpg",
+          "alt": "Boat wakes like streaks of light across dark swirling water"
+        }
+      ],
+      "narrow": false
+    },
+    {
+      "type": "images",
+      "layout": "row",
+      "images": [
+        {
+          "image": "media/sedimenta/08.jpg",
+          "alt": "A plume of pale sediment turning into dark blue water"
+        },
+        {
+          "image": "media/sedimenta/07.jpg",
+          "alt": "A boat's wake cutting across bands of green sediment"
+        }
+      ],
+      "narrow": false
+    },
+    {
+      "type": "images",
+      "layout": "row",
+      "images": [
+        {
+          "image": "media/sedimenta/06.jpg",
+          "alt": "Ships scattered where green sediment meets deep blue sea"
+        },
+        {
+          "image": "media/sedimenta/05.jpg",
+          "alt": "A pale band of sediment curving through dark green water"
+        }
+      ],
+      "narrow": false
+    },
+    {
+      "type": "images",
+      "layout": "row",
+      "images": [
+        {
+          "image": "media/sedimenta/04.jpg",
+          "caption": "23 May",
+          "alt": "Sediment trails off the mouths of the four main rivers of Romagna, 23 May 2023"
+        },
+        {
+          "image": "media/sedimenta/03.jpg",
+          "caption": "5 May",
+          "alt": "Sediment plumes off the four river mouths, 5 May 2023"
+        },
+        {
+          "image": "media/sedimenta/02.jpg",
+          "caption": "4 May",
+          "alt": "Bright sediment plumes fanning out from the four river mouths, 4 May 2023"
+        },
+        {
+          "image": "media/sedimenta/01.jpg",
+          "caption": "30 April",
+          "alt": "The four river mouths under cloud before the floods, 30 April 2023"
+        }
+      ],
+      "narrow": false
+    }
+  ],
+  "credits": [
+    {
+      "role": "Data",
+      "name": "Modified Copernicus Sentinel-2 L2A data (2023), obtained via EOS Data Analytics, Inc. CC BY-SA 3.0 IGO"
+    }
+  ]
+}
