@@ -7,8 +7,7 @@
       "image": "media/home/dscf235920221896490o.jpg"
     },
     {
-      "image": "media/home/mix-09.jpg",
-      "project": "content/projects/satellites.json"
+      "image": "media/home/mix-09.jpg"
     },
     {
       "image": "media/home/tibo2016999cimmorefugeed1.jpg"
@@ -17,16 +16,13 @@
       "image": "media/home/mix-12.jpg"
     },
     {
-      "image": "media/home/screenshot-2020-05-06-at-115529-1.png",
-      "project": "content/projects/beyond-the-fortress.json"
+      "image": "media/home/screenshot-2020-05-06-at-115529-1.png"
     },
     {
-      "image": "media/citizenm-glasgow/02.jpg",
-      "project": "content/projects/citizenm-glasgow.json"
+      "image": "media/citizenm-glasgow/02.jpg"
     },
     {
-      "image": "media/citizenm-amsterdam-south/01.jpg",
-      "project": "content/projects/citizenm-amsterdam-south.json"
+      "image": "media/citizenm-amsterdam-south/01.jpg"
     },
     {
       "image": "media/home/mix-05.jpg"
@@ -42,6 +38,15 @@
     },
     {
       "image": "media/home/cloudm-cocktailshoot07-2560x1440-1-1.jpg"
+    },
+    {
+      "image": "media/home/immorefugee-agency.jpg"
+    },
+    {
+      "image": "media/home/fence.jpg"
+    },
+    {
+      "image": "media/home/white-figure.jpg"
     }
   ]
 }
