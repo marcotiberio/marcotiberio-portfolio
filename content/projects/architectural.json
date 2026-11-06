@@ -86,6 +86,43 @@
       "layout": "full",
       "images": [
         {
+          "image": "media/citizenm-glasgow/07.jpg",
+          "alt": "Accessible room from the entrance: red sofa under a backlit panel, desk and bed beneath a window onto the city"
+        }
+      ],
+      "narrow": false
+    },
+    {
+      "type": "images",
+      "layout": "row",
+      "images": [
+        {
+          "image": "media/citizenm-glasgow/08.jpg",
+          "alt": "Bed under a wide window onto sandstone rooftops, red chair at the desk and two portraits on the wall"
+        },
+        {
+          "image": "media/citizenm-glasgow/09.jpg",
+          "alt": "From the bed back towards the door, past the glowing red panel and the sofa"
+        }
+      ],
+      "narrow": false
+    },
+    {
+      "type": "images",
+      "layout": "inset",
+      "images": [
+        {
+          "image": "media/citizenm-glasgow/10.jpg",
+          "alt": "Wall-to-wall bed between two lamps, drawers pulled out beneath it"
+        }
+      ],
+      "narrow": false
+    },
+    {
+      "type": "images",
+      "layout": "full",
+      "images": [
+        {
           "image": "media/citizenm-amsterdam-south/01.jpg",
           "alt": "View from the entrance through the round glass shower to the bed and window"
         }
