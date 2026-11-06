@@ -25,7 +25,7 @@ const real = (s) => {
   return t.replace(/\[([^\]]+)\]\(([^)\s[\]]+)\)/g, '').includes('[') ? '' : t;
 };
 
-// Two sections, each on its own page and never mixed. The home page is the image fire.
+// Two sections, each on its own page and never mixed. The home page is the image trail.
 // "personal" is the stored value for Research. Each page's intro, button and footer
 // line are edited in the CMS (content/research.json, content/commissions.json).
 const SECTIONS = [
@@ -233,8 +233,8 @@ ${list.map(entry).join('\n')}
   }));
 });
 
-// ── Home: image fire ──
-// The photographs chosen under Home in the CMS, fired onto a canvas by assets/fire.js.
+// ── Home: image trail ──
+// The photographs chosen under Home in the CMS, dropped along the mouse path by assets/trail.js.
 // Each carries its project's title and link, shown when the visitor pauses.
 // Caption and pause button are black tags, like the header.
 const homeFile = read('content/home.json');
@@ -244,14 +244,13 @@ const fire = (Array.isArray(homeFile) ? homeFile : homeFile.slides || []).filter
 });
 const fireTag = 'fixed bottom-5 md:bottom-7 z-2 bg-black px-1.5 py-0.5 text-white';
 writeFileSync(`${OUT}/index.html`, layout({
-  title: SEO.title || `${info.name} — ${JOB}${real(info.location) ? `, ${real(info.location)}` : ''}`, root: '', page: 'home', path: '', script: 'fire.js',
+  title: SEO.title || `${info.name} — ${JOB}${real(info.location) ? `, ${real(info.location)}` : ''}`, root: '', page: 'home', path: '', script: 'trail.js',
   description: SEO.description, image: SEO.image || fire[0]?.src,
   schema: { '@type': 'WebSite', name: info.name, ...(SITE && { url: `${SITE}/` }), description: real(info.description), author: PERSON },
   body: `<h1 class="sr-only">${esc(info.name)}${real(info.description) ? ` — ${esc(real(info.description))}` : ''}</h1>
-<section class="fire fixed inset-0 bg-black" aria-label="Photographs, shown in rapid succession">
-  <canvas class="block size-full cursor-pointer"></canvas>
-  <a class="fire-caption ${fireTag} left-[14px] md:left-[34px] underline-offset-4 decoration-1 hover:underline" hidden></a>
-  <button class="fire-toggle ${fireTag} right-[14px] md:right-[34px] cursor-pointer" type="button">Pause</button>
+<section class="trail fixed inset-0 overflow-hidden bg-black cursor-pointer" aria-label="Photographs that follow the mouse">
+  <a class="trail-caption ${fireTag} z-3 left-[14px] md:left-[34px] underline-offset-4 decoration-1 hover:underline" hidden></a>
+  <button class="trail-toggle ${fireTag} z-3 right-[14px] md:right-[34px] cursor-pointer" type="button">Pause</button>
   <script type="application/json" id="fire-data">${JSON.stringify(fire).replace(/</g, '\\u003c')}</script>
 </section>`,
 }));
