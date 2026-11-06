@@ -177,6 +177,10 @@ ${home || page === 'info' ? '' : `<footer class="${GRID} pt-7 pb-10 gap-y-6 item
   <p class="${FULL} pt-10 ${LABEL} text-soft">${esc(info.name)} · ${esc(real(info.location) || 'Amsterdam')}</p>
 </footer>`}
 ${script ? `<script src="${root}assets/${script}" defer></script>` : ''}
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
 `;
