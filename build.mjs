@@ -317,10 +317,10 @@ writeFileSync(`${OUT}/info.html`, layout({
   title: `Info — ${info.name}`, root: '', page: 'info', path: 'info.html', description: real(info.seo?.info_description) || info.bio,
   image: SEO.image || fire[0]?.src,
   schema: { '@type': 'ProfilePage', mainEntity: { ...PERSON, ...(real(info.bio) && { description: clip(info.bio, 500) }) } },
-  body: `<div class="${GRID} items-start gap-y-10 md:gap-y-0 pt-6 md:pt-10 pb-30 text-[14px] leading-[1.3] [&_a:hover]:text-soft">
-  <div class="${FULL} md:col-[1/7] ${COL} gap-7"><div class="grid gap-[.5em] ${LARGE} text-pretty [&_a]:underline [&_a]:underline-offset-4 [&_a]:decoration-1">${paras(info.bio)}</div>${col('left')}</div>
-  <div class="${FULL} md:col-[7/10] ${COL} gap-7">${col('middle')}</div>
-  <div class="${FULL} md:col-[10/13] ${COL} gap-5">${email ? `<section><h2>General enquiries</h2><p class="${BIG}"><a href="mailto:${esc(email)}">${esc(email)}</a></p></section>` : ''}${col('right')}${instagram ? `<section><h2>Follow</h2><p class="${BIG}"><a href="https://www.instagram.com/${esc(instagram)}/">Instagram</a></p></section>` : ''}</div>
+  body: `<div class="${GRID} items-start gap-y-10 md:gap-y-0 pt-6 md:pt-10 pb-30 text-[14px] leading-[1.3] [&_a]:underline [&_a]:underline-offset-[.2em] [&_a]:decoration-1 [&_a:hover]:text-soft">
+  <div class="${FULL} md:col-[1/7] ${COL} gap-7"><div class="grid gap-[.5em] ${LARGE} text-pretty">${paras(info.bio)}</div>${col('left')}</div>
+  <div class="${FULL} md:col-[7/11] ${COL} gap-7">${col('middle')}</div>
+  <div class="${FULL} md:col-[11/13] ${COL} gap-5">${email ? `<section><h2>General enquiries</h2><p class="${BIG}"><a href="mailto:${esc(email)}">${esc(email)}</a></p></section>` : ''}${col('right')}${instagram ? `<section><h2>Follow</h2><p class="${BIG}"><a href="https://www.instagram.com/${esc(instagram)}/">Instagram</a></p></section>` : ''}</div>
 </div>`,
 }));
 
