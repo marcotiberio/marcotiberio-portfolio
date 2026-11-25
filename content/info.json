@@ -20,24 +20,61 @@
     },
     {
       "column": "left",
-      "title": "Publications",
+      "title": "Press",
       "style": "list",
       "entries": [
         {
-          "date": "[Year]",
-          "text": "[Title], [Publisher]"
+          "date": "2023",
+          "text": "Cortona On The Move coverage: [LensCulture](https://www.lensculture.com/articles/cortona-on-the-move-cortona-s-13th-international-photo-festival-summertime-bliss-in-italy), [Collater.al](https://www.collater.al/en/cortona-on-the-move-more-or-less-photography/), [The Mammoth's Reflex](https://www.themammothreflex.com/appuntamenti/festival/2023/08/13/cortona-on-the-move-2023/)"
         },
         {
-          "date": "[Year]",
-          "text": "[Title], [Publisher]"
+          "date": "2018",
+          "text": "[Vogue Italia](https://www.vogue.it/fotografia/gallery/enlarge-magazine-by-marco-tiberio), “Enlarge Magazine by Marco Tiberio”"
+        },
+        {
+          "date": "2016.08",
+          "text": "[CityLab](https://www.bloomberg.com/news/articles/2016-08-10/the-photographer-marco-tiberio-documents-the-hand-built-houses-where-refugees-await-asylum-in-invisible-cities-the-architecture-of-exodus), “Where the Refugees Live” (in Spanish on [Univision](https://www.univision.com/noticias/citylab-politica/la-historia-de-los-refugiados-a-traves-de-sus-casas-improvisadas))"
+        },
+        {
+          "date": "2016.08",
+          "text": "[Fast Company](https://www.fastcompany.com/3062486/in-the-calais-refugee-camp-refugees-are-constructing-amazing-shelters), “In The Calais Refugee Camp, Refugees Are Constructing Amazing Shelters”"
+        },
+        {
+          "date": "2016.05",
+          "text": "[Archinect](https://archinect.com/features/article/149946026/photographing-the-jungle-of-calais-refugee-camp), Q&A by Nicholas Korody"
+        },
+        {
+          "date": "2016.04",
+          "text": "[Il Post](https://www.ilpost.it/2016/04/12/satellites-campi-profughi-tiberio/), “Le città dei migranti, dall'alto”"
+        },
+        {
+          "date": "2016.04",
+          "text": "[Il Post](https://www.ilpost.it/2016/04/01/invisible-cities-case-di-calais/), “Come sono fatte le case di Calais”"
+        },
+        {
+          "date": "2016.03",
+          "text": "[The Mammoth's Reflex](https://www.themammothreflex.com/project/2016/03/01/case-e-rifugi-le-invisible-cities-di-marco-tiberio/), “Case e rifugi”"
+        },
+        {
+          "date": "2016.02",
+          "text": "[Inside Art](https://insideart.eu/2016/02/03/marco-tiberio-architecture-of-exsodus/), “Architecture of Exodus”"
+        },
+        {
+          "date": "2016.01",
+          "text": "[Domus](https://www.domusweb.it/en/photo-essays/2016/01/26/marco_tiberio_invisible_cities_architecture_of_exodus.html), photo essay"
         }
       ]
     },
     {
       "column": "left",
-      "title": "Interviews, Features",
-      "style": "text",
-      "text": "[Publication]\n[Publication]"
+      "title": "Interviews",
+      "style": "list",
+      "entries": [
+        {
+          "date": "",
+          "text": "[The Kitab](https://thekitab.in/photobook-interviews/marco-tiberio-i-wanted-to-talk-about-migration-in-a-different-manner/), “I wanted to talk about migration in a different manner”, on ImmoRefugee"
+        }
+      ]
     },
     {
       "column": "middle",
@@ -45,12 +82,92 @@
       "style": "list",
       "entries": [
         {
-          "date": "[YYYY.MM]",
-          "text": "[Exhibition title]\n[Venue], [City], [Country]"
+          "date": "2023.07",
+          "text": "[Cortona On The Move](https://www.cortonaonthemove.com/en/exhibit/marco-tiberio-maria-ghetti/), “More or Less”, Invisible Cities Calais, with Maria Ghetti, Cortona, Italy"
         },
         {
-          "date": "[YYYY.MM]",
-          "text": "[Exhibition title]\n[Venue], [City], [Country]"
+          "date": "2018.03",
+          "text": "[Circulation(s)](https://www.festival-circulations.com/artiste/defrost-collective/), guest artist, ImmoRefugee, with Maria Ghetti, CENTQUATRE, Paris, France"
+        },
+        {
+          "date": "2018.03",
+          "text": "[Tique](https://tique.space/exhibitions/immorefugee/), ImmoRefugee, Antwerp, Belgium"
+        },
+        {
+          "date": "2017.05",
+          "text": "[Bieler Fototage](https://bielerfototage.ch/en/Exhibition/immorefugee/), “extrem”, ImmoRefugee, world premiere, Biel/Bienne, Switzerland"
+        },
+        {
+          "date": "2017.03",
+          "text": "[FORMAT](https://formatfestival.com/), “Habitat”, ImmoRefugee – The House, installation, with Maria Ghetti, Derby, UK, featured in [Time](https://time.com/4711774/format-festival/)"
+        },
+        {
+          "date": "2017.01",
+          "text": "[Fruit Exhibition](https://www.bolognadavivere.com/2017/01/fruit-exibition-le-mostre-in-programma-da-martedi-17-gennaio/), ImmoRefugee – The House, installation, Bologna, Italy"
+        }
+      ]
+    },
+    {
+      "column": "middle",
+      "title": "Books & publications",
+      "style": "list",
+      "entries": [
+        {
+          "date": "2018",
+          "text": "[Enlarge Magazine](https://www.vogue.it/fotografia/gallery/enlarge-magazine-by-marco-tiberio), satirical magazine on masculinity (sold out)"
+        },
+        {
+          "date": "2016.11",
+          "text": "ImmoRefugee, self-published photobook, edition of 1,000\nDesign by Emilio Macchia, printed in Ravenna"
+        }
+      ]
+    },
+    {
+      "column": "middle",
+      "title": "Awards & selections",
+      "style": "list",
+      "entries": [
+        {
+          "date": "2020.04",
+          "text": "Stimuleringsfonds, Starter Grant in Design"
+        },
+        {
+          "date": "2018",
+          "text": "[Nikon-NOOR Academy Italy](https://www.noorimages.com/marco-tiberio), Satellites"
+        },
+        {
+          "date": "2018.01",
+          "text": "Erasmus for Young Entrepreneurs"
+        },
+        {
+          "date": "2017",
+          "text": "[Kassel Photobook Award](https://blog.photoeye.com/2017/04/kassel-photobook-award-2017-experts.html), ImmoRefugee selected by Martin Parr"
+        }
+      ]
+    },
+    {
+      "column": "middle",
+      "title": "Reviews",
+      "style": "list",
+      "entries": [
+        {
+          "date": "2017.01",
+          "text": "[Christer Ek](https://whoneedsanotherphotoblog.wordpress.com/2017/01/08/the-renewal-of-protest-books/), “The renewal of protest books”, on ImmoRefugee"
+        },
+        {
+          "date": "2016.12",
+          "text": "[phot(o)lia](http://photolia.tumblr.com/post/154723325747/immorefugee-by-marco-tiberio-self-published-in), on ImmoRefugee"
+        }
+      ]
+    },
+    {
+      "column": "middle",
+      "title": "Selected commissions",
+      "style": "list",
+      "entries": [
+        {
+          "date": "2025",
+          "text": "[KIOSK × Metropolis M](https://kiosk.art/metropolis-m-2025-defrost-studio), a year of satirical fake ads in the magazine's advertising space, with Maria Ghetti"
         }
       ]
     },
