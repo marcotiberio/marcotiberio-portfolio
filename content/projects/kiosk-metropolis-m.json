@@ -1,0 +1,93 @@
+{
+  "title": "KIOSK × Metropolis M",
+  "draft": false,
+  "order": 9,
+  "section": "personal",
+  "client": "KIOSK",
+  "type": "Fake ads",
+  "location": "Metropolis M",
+  "year": "2025",
+  "description": "For a year, KIOSK gave us the advertising space in [Metropolis M](https://www.metropolism.com/). We filled it with fake ads: the language of marketing turned on censorship, political manipulation, environmental crisis and technology that goes too far. Each page asks readers to look again at the stories they are sold.\n\nWith Maria Ghetti. [See it on KIOSK](https://kiosk.art/metropolis-m-2025-defrost-studio).",
+  "cover": "media/kiosk-metropolis-m/01.jpg",
+  "index": [
+    {
+      "image": "media/kiosk-metropolis-m/01.jpg",
+      "alt": "Red and yellow coupons: Save your brain with this coupon, Stop doom scrolling, Total liquidation"
+    },
+    {
+      "image": "media/kiosk-metropolis-m/03.jpg",
+      "alt": "Yellow text over a 20 euro note: Can you put a price on freedom of speech?"
+    },
+    {
+      "image": "media/kiosk-metropolis-m/04.jpg",
+      "alt": "Trump post on the Iran strikes, blacked out except BOMBS and PEACE!"
+    },
+    {
+      "image": "media/kiosk-metropolis-m/06.jpg",
+      "alt": "Black and white portrait of a child: Is AI racist? Spoiler alert: it's not. We are."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "images",
+      "layout": "row",
+      "images": [
+        {
+          "image": "media/kiosk-metropolis-m/01.jpg",
+          "caption": "",
+          "alt": "Red and yellow coupons: Save your brain with this coupon, code STOPBRAINROT; Stop doom scrolling; Total liquidation; Put your phone down and kiss your partner; 70% off at Disconnect"
+        },
+        {
+          "image": "media/kiosk-metropolis-m/02.jpg",
+          "caption": "",
+          "alt": "A man in a Make America Great Again cap on a melting throne, about to lick an ice cream cone topped with the Earth: I want ice cream!"
+        }
+      ],
+      "narrow": false
+    },
+    {
+      "type": "images",
+      "layout": "row",
+      "images": [
+        {
+          "image": "media/kiosk-metropolis-m/03.jpg",
+          "caption": "25 Aprile",
+          "alt": "Yellow text over a 20 euro note with handwriting: Can you put a price on freedom of speech? Last year, the Meloni government settled it at 1,800 euros"
+        },
+        {
+          "image": "media/kiosk-metropolis-m/04.jpg",
+          "caption": "22.06.2025",
+          "alt": "Donald Trump's post on the strikes on Iran's nuclear sites, blacked out except the words BOMBS and PEACE!"
+        }
+      ],
+      "narrow": false
+    },
+    {
+      "type": "images",
+      "layout": "row",
+      "images": [
+        {
+          "image": "media/kiosk-metropolis-m/05.jpg",
+          "caption": "A letter to the Western World",
+          "alt": "White capitals on black, a letter on learned helplessness and resistance, ending: the psyche of the collective, without bending, without numbing, without surrender"
+        },
+        {
+          "image": "media/kiosk-metropolis-m/06.jpg",
+          "caption": "Immigrant or Expat?",
+          "alt": "Black and white generated portrait of a child: Is AI racist? Spoiler alert: it's not. We are."
+        }
+      ],
+      "narrow": false
+    }
+  ],
+  "credits": [
+    {
+      "role": "Studio",
+      "name": "Defrost Studio (Marco Tiberio, Maria Ghetti)"
+    },
+    {
+      "role": "Commissioned by",
+      "name": "KIOSK"
+    }
+  ]
+}
